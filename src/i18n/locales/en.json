@@ -1,0 +1,39 @@
+{
+  "app": { "name": "Dalilak", "tagline": "The Arab community guide in Belgium" },
+  "nav": { "home": "Home", "top": "Top rated", "picks": "Our favourites", "saved": "Saved", "settings": "Settings" },
+  "home": {
+    "searchPlaceholder": "Search: restaurant, halal butcher, doctor…",
+    "allCategories": "All",
+    "allProvinces": "All regions",
+    "dbOk": "{{count}} places in the guide",
+    "dbMissing": "Database not connected yet",
+    "dbError": "Could not reach the database"
+  },
+  "categories": {
+    "food": "Restaurants", "meat": "Halal butchers & groceries", "sweets": "Sweets & pastries", "cloth": "Clothing",
+    "beauty": "Barbers & beauty", "doc": "Doctors", "legal": "Lawyers & translators", "travel": "Travel & money transfer", "edu": "Mosques & associations"
+  },
+  "provinces": { "brussels": "Brussels", "antwerp": "Antwerp", "liege": "Liège", "other": "Other regions" },
+  "labels": {
+    "featured": "Featured",
+    "verified": "Verified",
+    "verifyArabic": "Call to confirm Arabic is spoken",
+    "sourceNote": "Info from Google Maps, may change"
+  },
+  "pages": {
+    "top": { "title": "Top rated", "desc": "Ranked only by real ratings (Google + Dalilak reviews). A paid subscription never affects this ranking." },
+    "picks": { "title": "Our favourites", "desc": "Businesses subscribed to Dalilak (paid placement), shown in rotation so each gets equal exposure." },
+    "saved": { "title": "Saved", "desc": "Places you save appear here." }
+  },
+  "settings": {
+    "title": "Settings", "language": "Language", "theme": "Appearance",
+    "themeSystem": "Device setting", "themeLight": "Light", "themeDark": "Dark",
+    "privacy": "Privacy policy", "terms": "Terms of use", "deleteAccount": "Delete my account"
+  },
+  "install": {
+    "ios": "To install Dalilak on iPhone: tap Share, then “Add to Home Screen”.",
+    "dismiss": "Close"
+  },
+  "common": { "soon": "Coming soon", "back": "Back to home" },
+  "notFound": { "title": "Page not found" }
+}

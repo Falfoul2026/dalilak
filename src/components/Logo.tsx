@@ -1,0 +1,10 @@
+/** Dalilak mark: a map pin on deep teal with a saffron dot. */
+export function Logo({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 64 64" role="img" aria-label="Dalilak">
+      <rect width="64" height="64" rx="16" fill="#0b5d5b" />
+      <path d="M32 12c-8.3 0-15 6.5-15 14.6C17 38 32 52 32 52s15-14 15-25.4C47 18.5 40.3 12 32 12z" fill="#fff" />
+      <circle cx="32" cy="26.5" r="6.5" fill="#e49b2d" />
+    </svg>
+  )
+}

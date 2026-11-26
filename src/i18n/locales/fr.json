@@ -1,0 +1,39 @@
+{
+  "app": { "name": "Dalilak", "tagline": "Le guide de la communauté arabe en Belgique" },
+  "nav": { "home": "Accueil", "top": "Les mieux notés", "picks": "Nos coups de cœur", "saved": "Enregistrés", "settings": "Réglages" },
+  "home": {
+    "searchPlaceholder": "Rechercher : restaurant, boucherie halal, médecin…",
+    "allCategories": "Tout",
+    "allProvinces": "Toutes les régions",
+    "dbOk": "{{count}} adresses dans le guide",
+    "dbMissing": "Base de données pas encore connectée",
+    "dbError": "Connexion à la base de données impossible"
+  },
+  "categories": {
+    "food": "Restaurants", "meat": "Boucheries et épiceries halal", "sweets": "Pâtisseries orientales", "cloth": "Vêtements",
+    "beauty": "Coiffure et beauté", "doc": "Médecins", "legal": "Avocats et traducteurs", "travel": "Voyages et transferts", "edu": "Mosquées et associations"
+  },
+  "provinces": { "brussels": "Bruxelles", "antwerp": "Anvers", "liege": "Liège", "other": "Autres régions" },
+  "labels": {
+    "featured": "Sponsorisé",
+    "verified": "Vérifié",
+    "verifyArabic": "Appelez pour vérifier l’arabe",
+    "sourceNote": "Infos de Google Maps, susceptibles de changer"
+  },
+  "pages": {
+    "top": { "title": "Les mieux notés", "desc": "Classement uniquement selon les vraies notes (Google + avis Dalilak). Un abonnement payant n’a aucun effet sur ce classement." },
+    "picks": { "title": "Nos coups de cœur", "desc": "Commerces abonnés à Dalilak (publicité payante), affichés en rotation pour une visibilité égale." },
+    "saved": { "title": "Enregistrés", "desc": "Les adresses que vous enregistrez apparaissent ici." }
+  },
+  "settings": {
+    "title": "Réglages", "language": "Langue", "theme": "Apparence",
+    "themeSystem": "Selon l’appareil", "themeLight": "Clair", "themeDark": "Sombre",
+    "privacy": "Politique de confidentialité", "terms": "Conditions d’utilisation", "deleteAccount": "Supprimer mon compte"
+  },
+  "install": {
+    "ios": "Pour installer Dalilak sur iPhone : touchez Partager puis « Sur l’écran d’accueil ».",
+    "dismiss": "Fermer"
+  },
+  "common": { "soon": "Bientôt", "back": "Retour à l’accueil" },
+  "notFound": { "title": "Page introuvable" }
+}

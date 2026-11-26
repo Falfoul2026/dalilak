@@ -1,0 +1,10 @@
+node_modules
+dist
+.vite-react-ssg-temp
+.env
+.env.*
+!.env.example
+*.local
+android/app/release
+*.keystore
+*.jks

@@ -1,0 +1,39 @@
+{
+  "app": { "name": "Dalilak", "tagline": "De gids van de Arabische gemeenschap in België" },
+  "nav": { "home": "Home", "top": "Best beoordeeld", "picks": "Onze favorieten", "saved": "Bewaard", "settings": "Instellingen" },
+  "home": {
+    "searchPlaceholder": "Zoek: restaurant, halal slager, dokter…",
+    "allCategories": "Alles",
+    "allProvinces": "Alle regio’s",
+    "dbOk": "{{count}} adressen in de gids",
+    "dbMissing": "Database nog niet verbonden",
+    "dbError": "Geen verbinding met de database"
+  },
+  "categories": {
+    "food": "Restaurants", "meat": "Halal slagers en supermarkten", "sweets": "Oosterse zoetigheden", "cloth": "Kleding",
+    "beauty": "Kapper en schoonheid", "doc": "Artsen", "legal": "Advocaten en vertalers", "travel": "Reizen en geldtransfers", "edu": "Moskeeën en verenigingen"
+  },
+  "provinces": { "brussels": "Brussel", "antwerp": "Antwerpen", "liege": "Luik", "other": "Andere regio’s" },
+  "labels": {
+    "featured": "Gesponsord",
+    "verified": "Geverifieerd",
+    "verifyArabic": "Bel om Arabisch te bevestigen",
+    "sourceNote": "Info van Google Maps, kan wijzigen"
+  },
+  "pages": {
+    "top": { "title": "Best beoordeeld", "desc": "Alleen gerangschikt op echte beoordelingen (Google + Dalilak-reviews). Een betaald abonnement heeft geen invloed op deze rangorde." },
+    "picks": { "title": "Onze favorieten", "desc": "Zaken met een Dalilak-abonnement (betaalde vermelding), afwisselend getoond zodat iedereen even vaak verschijnt." },
+    "saved": { "title": "Bewaard", "desc": "Adressen die je bewaart, verschijnen hier." }
+  },
+  "settings": {
+    "title": "Instellingen", "language": "Taal", "theme": "Weergave",
+    "themeSystem": "Zoals toestel", "themeLight": "Licht", "themeDark": "Donker",
+    "privacy": "Privacybeleid", "terms": "Gebruiksvoorwaarden", "deleteAccount": "Mijn account verwijderen"
+  },
+  "install": {
+    "ios": "Dalilak installeren op iPhone: tik op Delen en dan op ‘Zet op beginscherm’.",
+    "dismiss": "Sluiten"
+  },
+  "common": { "soon": "Binnenkort", "back": "Terug naar home" },
+  "notFound": { "title": "Pagina niet gevonden" }
+}

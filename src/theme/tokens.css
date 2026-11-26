@@ -1,0 +1,62 @@
+/* Dalilak design tokens – deep teal + saffron, light and dark. */
+:root {
+  --teal-900: #063a39;
+  --teal-700: #0b5d5b;
+  --teal-600: #0f706d;
+  --teal-100: #d9eeec;
+  --saffron-500: #e49b2d;
+  --saffron-100: #fbedd6;
+
+  --bg: #f6f8f7;
+  --surface: #ffffff;
+  --surface-2: #eef3f2;
+  --text: #13201f;
+  --text-muted: #5b6b69;
+  --border: #dbe4e2;
+  --primary: var(--teal-700);
+  --primary-contrast: #ffffff;
+  --accent: var(--saffron-500);
+  --accent-soft: var(--saffron-100);
+  --accent-text: #7a4a05;
+  --focus: #e49b2d;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 16px rgb(0 0 0 / 0.05);
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --gutter: 16px;
+  --nav-h: 64px;
+  --font: 'Cairo', 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0c1413;
+    --surface: #13201f;
+    --surface-2: #1a2b29;
+    --text: #e8f0ef;
+    --text-muted: #9db1ae;
+    --border: #253836;
+    --primary: #3fb3ad;
+    --primary-contrast: #062b2a;
+    --accent-soft: #3a2a10;
+    --accent-text: #f3c27a;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0c1413;
+  --surface: #13201f;
+  --surface-2: #1a2b29;
+  --text: #e8f0ef;
+  --text-muted: #9db1ae;
+  --border: #253836;
+  --primary: #3fb3ad;
+  --primary-contrast: #062b2a;
+  --accent-soft: #3a2a10;
+  --accent-text: #f3c27a;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4);
+  color-scheme: dark;
+}
