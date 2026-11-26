@@ -1,30 +1,28 @@
 import { useT } from '../i18n'
 
-/** Placeholder for pages built in the next steps. */
-export function InfoPage({ page }: { page: 'top' | 'picks' | 'saved' }) {
+/** Pages that arrive in the next steps. */
+function SoonPage({ title }: { title: string }) {
   const t = useT()
   return (
     <section>
-      <h1 className="page-title">{t(`pages.${page}.title`)}</h1>
-      <p className="muted">{t(`pages.${page}.desc`)}</p>
+      <h1 className="page-title">{title}</h1>
       <div className="card">{t('common.soon')}</div>
     </section>
   )
 }
 
-export const TopRated = () => <InfoPage page="top" />
-export const OurPicks = () => <InfoPage page="picks" />
-export const Saved = () => <InfoPage page="saved" />
+export const Privacy = () => <SoonPage title={useT()('settings.privacy')} />
+export const Terms = () => <SoonPage title={useT()('settings.terms')} />
+export const Report = () => <SoonPage title={useT()('soonPage.report')} />
+export const Claim = () => <SoonPage title={useT()('soonPage.claim')} />
 
-/** Privacy / terms: real texts come in the legal step. */
-export function LegalPage({ which }: { which: 'privacy' | 'terms' }) {
+export function Login() {
   const t = useT()
   return (
     <section>
-      <h1 className="page-title">{t(`settings.${which}`)}</h1>
-      <div className="card">{t('common.soon')}</div>
+      <h1 className="page-title">{t('auth.loginTitle')}</h1>
+      <p className="muted">{t('auth.loginNeeded')}</p>
+      <div className="card">{t('auth.soon')}</div>
     </section>
   )
 }
-export const Privacy = () => <LegalPage which="privacy" />
-export const Terms = () => <LegalPage which="terms" />

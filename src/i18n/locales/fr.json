@@ -1,19 +1,45 @@
 {
-  "app": { "name": "Dalilak", "tagline": "Le guide de la communauté arabe en Belgique" },
-  "nav": { "home": "Accueil", "top": "Les mieux notés", "picks": "Nos coups de cœur", "saved": "Enregistrés", "settings": "Réglages" },
+  "app": {
+    "name": "Dalilak",
+    "tagline": "Le guide de la communauté arabe en Belgique"
+  },
+  "nav": {
+    "home": "Accueil",
+    "top": "Les mieux notés",
+    "picks": "Nos coups de cœur",
+    "saved": "Enregistrés",
+    "settings": "Réglages"
+  },
   "home": {
     "searchPlaceholder": "Rechercher : restaurant, boucherie halal, médecin…",
     "allCategories": "Tout",
-    "allProvinces": "Toutes les régions",
-    "dbOk": "{{count}} adresses dans le guide",
-    "dbMissing": "Base de données pas encore connectée",
-    "dbError": "Connexion à la base de données impossible"
+    "allProvinces": "Toutes les régions"
   },
   "categories": {
-    "food": "Restaurants", "meat": "Boucheries et épiceries halal", "sweets": "Pâtisseries orientales", "cloth": "Vêtements",
-    "beauty": "Coiffure et beauté", "doc": "Médecins", "legal": "Avocats et traducteurs", "travel": "Voyages et transferts", "edu": "Mosquées et associations"
+    "food": "Restaurants",
+    "meat": "Boucheries et épiceries halal",
+    "sweets": "Pâtisseries orientales",
+    "cloth": "Vêtements",
+    "beauty": "Coiffure et beauté",
+    "doc": "Médecins",
+    "legal": "Avocats et traducteurs",
+    "travel": "Voyages et transferts",
+    "edu": "Mosquées et associations"
   },
-  "provinces": { "brussels": "Bruxelles", "antwerp": "Anvers", "liege": "Liège", "other": "Autres régions" },
+  "provinces": {
+    "brussels": "Bruxelles",
+    "antwerp": "Anvers",
+    "liege": "Liège",
+    "other": "Autres régions",
+    "flemish-brabant": "Brabant flamand",
+    "walloon-brabant": "Brabant wallon",
+    "east-flanders": "Flandre-Orientale",
+    "west-flanders": "Flandre-Occidentale",
+    "limburg": "Limbourg",
+    "hainaut": "Hainaut",
+    "namur": "Namur",
+    "luxembourg": "Luxembourg"
+  },
   "labels": {
     "featured": "Sponsorisé",
     "verified": "Vérifié",
@@ -21,19 +47,104 @@
     "sourceNote": "Infos de Google Maps, susceptibles de changer"
   },
   "pages": {
-    "top": { "title": "Les mieux notés", "desc": "Classement uniquement selon les vraies notes (Google + avis Dalilak). Un abonnement payant n’a aucun effet sur ce classement." },
-    "picks": { "title": "Nos coups de cœur", "desc": "Commerces abonnés à Dalilak (publicité payante), affichés en rotation pour une visibilité égale." },
-    "saved": { "title": "Enregistrés", "desc": "Les adresses que vous enregistrez apparaissent ici." }
+    "top": {
+      "title": "Les mieux notés",
+      "desc": "Classement uniquement selon les vraies notes (Google + avis Dalilak). Un abonnement payant n’a aucun effet sur ce classement."
+    },
+    "picks": {
+      "title": "Nos coups de cœur",
+      "desc": "Commerces abonnés à Dalilak (publicité payante), affichés en rotation pour une visibilité égale."
+    },
+    "saved": {
+      "title": "Enregistrés",
+      "desc": "Les adresses que vous enregistrez apparaissent ici."
+    }
   },
   "settings": {
-    "title": "Réglages", "language": "Langue", "theme": "Apparence",
-    "themeSystem": "Selon l’appareil", "themeLight": "Clair", "themeDark": "Sombre",
-    "privacy": "Politique de confidentialité", "terms": "Conditions d’utilisation", "deleteAccount": "Supprimer mon compte"
+    "title": "Réglages",
+    "language": "Langue",
+    "theme": "Apparence",
+    "themeSystem": "Selon l’appareil",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d’utilisation",
+    "deleteAccount": "Supprimer mon compte"
   },
   "install": {
     "ios": "Pour installer Dalilak sur iPhone : touchez Partager puis « Sur l’écran d’accueil ».",
     "dismiss": "Fermer"
   },
-  "common": { "soon": "Bientôt", "back": "Retour à l’accueil" },
-  "notFound": { "title": "Page introuvable" }
+  "common": {
+    "soon": "Bientôt",
+    "back": "Retour à l’accueil"
+  },
+  "notFound": {
+    "title": "Page introuvable"
+  },
+  "list": {
+    "reviews": "{{count}} avis",
+    "noRating": "Pas encore de note",
+    "empty": "Aucun résultat. Essayez un autre mot ou une autre catégorie.",
+    "loadMore": "Voir plus",
+    "loading": "Chargement…",
+    "error": "Erreur de connexion. Réessayez.",
+    "retry": "Réessayer",
+    "results": "Résultats",
+    "allListings": "Toutes les adresses",
+    "seeAll": "Tout voir"
+  },
+  "listing": {
+    "call": "Appeler",
+    "directions": "Itinéraire",
+    "website": "Site web",
+    "share": "Partager",
+    "save": "Enregistrer",
+    "saved": "Enregistré",
+    "report": "Signaler",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "languages": "Langues",
+    "rating": "Note",
+    "googleRating": "Note Google",
+    "appRating": "Note Dalilak",
+    "offer": "Offre spéciale",
+    "about": "À propos",
+    "photos": "Photos",
+    "reviews": "Avis",
+    "noReviews": "Pas encore d’avis.",
+    "writeReview": "Écrire un avis",
+    "ownerReply": "Réponse du propriétaire",
+    "anonymous": "Utilisateur",
+    "claim": "C’est votre commerce ? Revendiquez-le",
+    "linkCopied": "Lien copié",
+    "notFound": "Cette adresse n’existe pas ou a été masquée.",
+    "featuredNote": "Commerce abonné à Dalilak"
+  },
+  "langNames": {
+    "ar": "Arabe",
+    "fr": "Français",
+    "nl": "Néerlandais",
+    "en": "Anglais",
+    "de": "Allemand",
+    "es": "Espagnol",
+    "tr": "Turc",
+    "ber": "Amazigh"
+  },
+  "auth": {
+    "loginTitle": "Connexion",
+    "loginNeeded": "Connectez-vous pour enregistrer des adresses et les retrouver sur tous vos appareils.",
+    "login": "Se connecter",
+    "soon": "La connexion arrive à la prochaine étape."
+  },
+  "saved": {
+    "empty": "Vous n’avez encore rien enregistré. Touchez « Enregistrer » sur la page d’une adresse."
+  },
+  "soonPage": {
+    "report": "Formulaire de signalement",
+    "claim": "Revendiquer ce commerce"
+  },
+  "top": {
+    "rank": "N° {{n}}"
+  }
 }

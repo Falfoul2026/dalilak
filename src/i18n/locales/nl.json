@@ -1,19 +1,45 @@
 {
-  "app": { "name": "Dalilak", "tagline": "De gids van de Arabische gemeenschap in België" },
-  "nav": { "home": "Home", "top": "Best beoordeeld", "picks": "Onze favorieten", "saved": "Bewaard", "settings": "Instellingen" },
+  "app": {
+    "name": "Dalilak",
+    "tagline": "De gids van de Arabische gemeenschap in België"
+  },
+  "nav": {
+    "home": "Home",
+    "top": "Best beoordeeld",
+    "picks": "Onze favorieten",
+    "saved": "Bewaard",
+    "settings": "Instellingen"
+  },
   "home": {
     "searchPlaceholder": "Zoek: restaurant, halal slager, dokter…",
     "allCategories": "Alles",
-    "allProvinces": "Alle regio’s",
-    "dbOk": "{{count}} adressen in de gids",
-    "dbMissing": "Database nog niet verbonden",
-    "dbError": "Geen verbinding met de database"
+    "allProvinces": "Alle regio’s"
   },
   "categories": {
-    "food": "Restaurants", "meat": "Halal slagers en supermarkten", "sweets": "Oosterse zoetigheden", "cloth": "Kleding",
-    "beauty": "Kapper en schoonheid", "doc": "Artsen", "legal": "Advocaten en vertalers", "travel": "Reizen en geldtransfers", "edu": "Moskeeën en verenigingen"
+    "food": "Restaurants",
+    "meat": "Halal slagers en supermarkten",
+    "sweets": "Oosterse zoetigheden",
+    "cloth": "Kleding",
+    "beauty": "Kapper en schoonheid",
+    "doc": "Artsen",
+    "legal": "Advocaten en vertalers",
+    "travel": "Reizen en geldtransfers",
+    "edu": "Moskeeën en verenigingen"
   },
-  "provinces": { "brussels": "Brussel", "antwerp": "Antwerpen", "liege": "Luik", "other": "Andere regio’s" },
+  "provinces": {
+    "brussels": "Brussel",
+    "antwerp": "Antwerpen",
+    "liege": "Luik",
+    "other": "Andere regio’s",
+    "flemish-brabant": "Vlaams-Brabant",
+    "walloon-brabant": "Waals-Brabant",
+    "east-flanders": "Oost-Vlaanderen",
+    "west-flanders": "West-Vlaanderen",
+    "limburg": "Limburg",
+    "hainaut": "Henegouwen",
+    "namur": "Namen",
+    "luxembourg": "Luxemburg"
+  },
   "labels": {
     "featured": "Gesponsord",
     "verified": "Geverifieerd",
@@ -21,19 +47,104 @@
     "sourceNote": "Info van Google Maps, kan wijzigen"
   },
   "pages": {
-    "top": { "title": "Best beoordeeld", "desc": "Alleen gerangschikt op echte beoordelingen (Google + Dalilak-reviews). Een betaald abonnement heeft geen invloed op deze rangorde." },
-    "picks": { "title": "Onze favorieten", "desc": "Zaken met een Dalilak-abonnement (betaalde vermelding), afwisselend getoond zodat iedereen even vaak verschijnt." },
-    "saved": { "title": "Bewaard", "desc": "Adressen die je bewaart, verschijnen hier." }
+    "top": {
+      "title": "Best beoordeeld",
+      "desc": "Alleen gerangschikt op echte beoordelingen (Google + Dalilak-reviews). Een betaald abonnement heeft geen invloed op deze rangorde."
+    },
+    "picks": {
+      "title": "Onze favorieten",
+      "desc": "Zaken met een Dalilak-abonnement (betaalde vermelding), afwisselend getoond zodat iedereen even vaak verschijnt."
+    },
+    "saved": {
+      "title": "Bewaard",
+      "desc": "Adressen die je bewaart, verschijnen hier."
+    }
   },
   "settings": {
-    "title": "Instellingen", "language": "Taal", "theme": "Weergave",
-    "themeSystem": "Zoals toestel", "themeLight": "Licht", "themeDark": "Donker",
-    "privacy": "Privacybeleid", "terms": "Gebruiksvoorwaarden", "deleteAccount": "Mijn account verwijderen"
+    "title": "Instellingen",
+    "language": "Taal",
+    "theme": "Weergave",
+    "themeSystem": "Zoals toestel",
+    "themeLight": "Licht",
+    "themeDark": "Donker",
+    "privacy": "Privacybeleid",
+    "terms": "Gebruiksvoorwaarden",
+    "deleteAccount": "Mijn account verwijderen"
   },
   "install": {
     "ios": "Dalilak installeren op iPhone: tik op Delen en dan op ‘Zet op beginscherm’.",
     "dismiss": "Sluiten"
   },
-  "common": { "soon": "Binnenkort", "back": "Terug naar home" },
-  "notFound": { "title": "Pagina niet gevonden" }
+  "common": {
+    "soon": "Binnenkort",
+    "back": "Terug naar home"
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden"
+  },
+  "list": {
+    "reviews": "{{count}} reviews",
+    "noRating": "Nog geen beoordeling",
+    "empty": "Geen resultaten. Probeer een ander woord of een andere categorie.",
+    "loadMore": "Meer tonen",
+    "loading": "Laden…",
+    "error": "Verbindingsfout. Probeer opnieuw.",
+    "retry": "Opnieuw",
+    "results": "Resultaten",
+    "allListings": "Alle adressen",
+    "seeAll": "Alles bekijken"
+  },
+  "listing": {
+    "call": "Bellen",
+    "directions": "Route",
+    "website": "Website",
+    "share": "Delen",
+    "save": "Bewaren",
+    "saved": "Bewaard",
+    "report": "Melden",
+    "address": "Adres",
+    "phone": "Telefoon",
+    "languages": "Talen",
+    "rating": "Beoordeling",
+    "googleRating": "Google-score",
+    "appRating": "Dalilak-score",
+    "offer": "Speciale aanbieding",
+    "about": "Over",
+    "photos": "Foto’s",
+    "reviews": "Reviews",
+    "noReviews": "Nog geen reviews.",
+    "writeReview": "Schrijf een review",
+    "ownerReply": "Antwoord van de eigenaar",
+    "anonymous": "Gebruiker",
+    "claim": "Is dit jouw zaak? Claim ze",
+    "linkCopied": "Link gekopieerd",
+    "notFound": "Dit adres bestaat niet of is verborgen.",
+    "featuredNote": "Zaak met een Dalilak-abonnement"
+  },
+  "langNames": {
+    "ar": "Arabisch",
+    "fr": "Frans",
+    "nl": "Nederlands",
+    "en": "Engels",
+    "de": "Duits",
+    "es": "Spaans",
+    "tr": "Turks",
+    "ber": "Amazigh"
+  },
+  "auth": {
+    "loginTitle": "Inloggen",
+    "loginNeeded": "Log in om adressen te bewaren en ze op al je toestellen te zien.",
+    "login": "Inloggen",
+    "soon": "Inloggen komt in de volgende stap."
+  },
+  "saved": {
+    "empty": "Je hebt nog niets bewaard. Tik op ‘Bewaren’ op de pagina van een adres."
+  },
+  "soonPage": {
+    "report": "Meldformulier",
+    "claim": "Deze zaak claimen"
+  },
+  "top": {
+    "rank": "Nr. {{n}}"
+  }
 }

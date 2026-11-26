@@ -11,4 +11,3 @@ export const CATEGORIES = [
   { slug: 'edu', icon: '🕌' },
 ] as const
 
-export const LAUNCH_PROVINCES = ['brussels', 'antwerp', 'liege'] as const

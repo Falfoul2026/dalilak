@@ -1,67 +1,92 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useLoaderData } from 'react-router-dom'
 import { useT } from '../i18n'
-import { CATEGORIES, LAUNCH_PROVINCES } from '../data/categories'
 import { IconSearch } from '../components/Icons'
-import { supabase } from '../lib/supabase'
+import { CategoryChips, ProvinceSelect } from '../components/Filters'
+import { FeaturedCarousel } from '../components/FeaturedCarousel'
+import { ListingCard } from '../components/ListingCard'
+import { Empty, ErrorBox, Loading } from '../components/ListState'
+import { PAGE_SIZE, logSearch, searchListings } from '../lib/listings'
+import { isSupabaseConfigured } from '../lib/supabase'
+import { useDebounced, useFilters } from '../lib/useFilters'
+import type { Listing } from '../lib/types'
 
-type DbState = { kind: 'loading' } | { kind: 'missing' } | { kind: 'error' } | { kind: 'ok'; count: number }
+/** Build time: the first page of the plain list goes into the static HTML (crawlable links). */
+export async function loader() {
+  if (!import.meta.env.SSR) return null
+  const { allActiveListings } = await import('../lib/ssrData')
+  return { items: (await allActiveListings()).slice(0, PAGE_SIZE) }
+}
 
-export default function Home() {
+type Status = 'idle' | 'loading' | 'error'
+
+export function Component() {
   const t = useT()
-  const [category, setCategory] = useState<string | null>(null)
-  const [province, setProvince] = useState('')
-  const [db, setDb] = useState<DbState>({ kind: 'loading' })
+  const pre = useLoaderData() as { items: Listing[] } | null
+  const { filters, update, ready, isDefault } = useFilters()
+  const [qInput, setQInput] = useState('')
+  const q = useDebounced(qInput)
+  const [items, setItems] = useState<Listing[]>(pre?.items ?? [])
+  const [status, setStatus] = useState<Status>(pre ? 'idle' : 'loading')
+  const [more, setMore] = useState((pre?.items.length ?? 0) >= PAGE_SIZE)
+  const req = useRef(0)
 
-  // Step 2 check: shows how many listings the database holds.
-  // Replaced by the real list in step 3.
-  useEffect(() => {
-    if (!supabase) return setDb({ kind: 'missing' })
-    supabase
-      .from('listings')
-      .select('id', { count: 'exact', head: true })
-      .then(({ count, error }) => setDb(error ? { kind: 'error' } : { kind: 'ok', count: count ?? 0 }))
-  }, [])
+  useEffect(() => { if (ready) setQInput(filters.q) }, [ready]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (ready && q !== filters.q) update({ q }) }, [q]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  const load = useCallback(async (offset: number) => {
+    if (!isSupabaseConfigured) return
+    const id = ++req.current
+    setStatus('loading')
+    try {
+      const rows = await searchListings(filters, offset)
+      if (id !== req.current) return
+      setItems((prev) => (offset === 0 ? rows : [...prev, ...rows]))
+      setMore(rows.length === PAGE_SIZE)
+      setStatus('idle')
+      if (offset === 0) logSearch(filters, rows.length)
+    } catch {
+      if (id === req.current) setStatus('error')
+    }
+  }, [filters])
+
+  // Fresh data from the database once the page is in the browser (and on every filter change).
+  useEffect(() => { if (ready) void load(0) }, [ready, load])
+
+  const filtered = !isDefault
   return (
     <>
       <form className="search" role="search" onSubmit={(e) => e.preventDefault()}>
         <label className="visually-hidden" htmlFor="q">{t('home.searchPlaceholder')}</label>
         <IconSearch />
-        <input id="q" type="search" placeholder={t('home.searchPlaceholder')} autoComplete="off" />
+        <input id="q" type="search" placeholder={t('home.searchPlaceholder')} autoComplete="off" enterKeyHint="search"
+          value={qInput} onChange={(e) => setQInput(e.target.value)} />
       </form>
 
-      <div className="chips" role="group" aria-label={t('home.allCategories')}>
-        <button className="chip" aria-pressed={category === null} onClick={() => setCategory(null)}>
-          {t('home.allCategories')}
-        </button>
-        {CATEGORIES.map((c) => (
-          <button key={c.slug} className="chip" aria-pressed={category === c.slug} onClick={() => setCategory(c.slug)}>
-            <span aria-hidden>{c.icon}</span>
-            {t(`categories.${c.slug}`)}
+      <CategoryChips value={filters.category} onChange={(category) => update({ category })} />
+      <ProvinceSelect value={filters.province} onChange={(province) => update({ province })} />
+
+      {!filtered && <FeaturedCarousel category={null} province={null} />}
+
+      <section aria-labelledby="list-title" className="stack" style={{ marginTop: 16 }}>
+        <h2 id="list-title" className="section-title">{filtered ? t('list.results') : t('list.allListings')}</h2>
+        {status === 'error' && items.length === 0 && <ErrorBox onRetry={() => void load(0)} />}
+        {status === 'loading' && items.length === 0 && <Loading />}
+        {status === 'idle' && items.length === 0 && <Empty text={t('list.empty')} />}
+        <ul className="listing-list" aria-busy={status === 'loading'}>
+          {items.map((l) => (
+            // In filtered results premium listings are boosted, so they carry the paid label.
+            <li key={l.id}><ListingCard l={l} featured={filtered && l.premium_active} /></li>
+          ))}
+        </ul>
+        {more && items.length > 0 && (
+          <button type="button" className="btn btn--block" disabled={status === 'loading'} onClick={() => void load(items.length)}>
+            {status === 'loading' ? t('list.loading') : t('list.loadMore')}
           </button>
-        ))}
-      </div>
-
-      <label className="visually-hidden" htmlFor="province">{t('home.allProvinces')}</label>
-      <select id="province" className="select" value={province} onChange={(e) => setProvince(e.target.value)}>
-        <option value="">{t('home.allProvinces')}</option>
-        {LAUNCH_PROVINCES.map((p) => <option key={p} value={p}>{t(`provinces.${p}`)}</option>)}
-        <option value="other">{t('provinces.other')}</option>
-      </select>
-
-      <div className="card" style={{ marginTop: 16 }}>
-        <p style={{ margin: 0 }}>
-          {db.kind === 'ok' && t('home.dbOk', { count: db.count })}
-          {db.kind === 'missing' && t('home.dbMissing')}
-          {db.kind === 'error' && t('home.dbError')}
-          {db.kind === 'loading' && '…'}
-        </p>
-        <p className="muted" style={{ margin: '6px 0 0', fontSize: 14 }}>
-          <span className="badge badge--featured">{t('labels.featured')}</span>{' '}
-          <span className="badge badge--verify">{t('labels.verifyArabic')}</span>
-        </p>
-        <p className="muted" style={{ margin: '6px 0 0', fontSize: 13 }}>{t('labels.sourceNote')}</p>
-      </div>
+        )}
+      </section>
     </>
   )
 }
+
+export default Component

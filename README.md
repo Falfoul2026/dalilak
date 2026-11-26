@@ -38,3 +38,14 @@ Rules that matter:
 - Admin actions are `admin_*()` functions that check `is_admin()`.
 - Free listing: name, category, address, phone, Google rating. Premium adds logo, up to 8 photos, description, offer line, website, verified badge, stats. When premium ends the listing stays; only the extras disappear.
 - "الأعلى تقييماً" (`top_rated`) is rating only; "خياراتنا المفضلة" (`featured_listings`) is premium only, shuffled for equal exposure; search boosts premium inside its category/province and the UI always labels it.
+
+## Deploy (Cloudflare Pages, free)
+
+- Build command `npm run build`, output directory `dist`, Node 22 (`.node-version`).
+- Environment variables: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (publishable key), `VITE_SITE_URL`.
+- The build reads all active listings from Supabase and pre-renders `/l/<slug>` in 4 languages, plus `sitemap.xml`.
+  New or changed listings appear on the site immediately (loaded in the browser); their static page for Google
+  comes with the next build (deploy hook – step 5).
+- `dist/404.html` is an empty app shell: pages without a static file still work in the browser.
+
+In this cloud container Node's `fetch` needs `NODE_USE_ENV_PROXY=1 npm run build` (proxy); Cloudflare does not.

@@ -1,19 +1,45 @@
 {
-  "app": { "name": "Dalilak", "tagline": "The Arab community guide in Belgium" },
-  "nav": { "home": "Home", "top": "Top rated", "picks": "Our favourites", "saved": "Saved", "settings": "Settings" },
+  "app": {
+    "name": "Dalilak",
+    "tagline": "The Arab community guide in Belgium"
+  },
+  "nav": {
+    "home": "Home",
+    "top": "Top rated",
+    "picks": "Our favourites",
+    "saved": "Saved",
+    "settings": "Settings"
+  },
   "home": {
     "searchPlaceholder": "Search: restaurant, halal butcher, doctor…",
     "allCategories": "All",
-    "allProvinces": "All regions",
-    "dbOk": "{{count}} places in the guide",
-    "dbMissing": "Database not connected yet",
-    "dbError": "Could not reach the database"
+    "allProvinces": "All regions"
   },
   "categories": {
-    "food": "Restaurants", "meat": "Halal butchers & groceries", "sweets": "Sweets & pastries", "cloth": "Clothing",
-    "beauty": "Barbers & beauty", "doc": "Doctors", "legal": "Lawyers & translators", "travel": "Travel & money transfer", "edu": "Mosques & associations"
+    "food": "Restaurants",
+    "meat": "Halal butchers & groceries",
+    "sweets": "Sweets & pastries",
+    "cloth": "Clothing",
+    "beauty": "Barbers & beauty",
+    "doc": "Doctors",
+    "legal": "Lawyers & translators",
+    "travel": "Travel & money transfer",
+    "edu": "Mosques & associations"
   },
-  "provinces": { "brussels": "Brussels", "antwerp": "Antwerp", "liege": "Liège", "other": "Other regions" },
+  "provinces": {
+    "brussels": "Brussels",
+    "antwerp": "Antwerp",
+    "liege": "Liège",
+    "other": "Other regions",
+    "flemish-brabant": "Flemish Brabant",
+    "walloon-brabant": "Walloon Brabant",
+    "east-flanders": "East Flanders",
+    "west-flanders": "West Flanders",
+    "limburg": "Limburg",
+    "hainaut": "Hainaut",
+    "namur": "Namur",
+    "luxembourg": "Luxembourg"
+  },
   "labels": {
     "featured": "Featured",
     "verified": "Verified",
@@ -21,19 +47,104 @@
     "sourceNote": "Info from Google Maps, may change"
   },
   "pages": {
-    "top": { "title": "Top rated", "desc": "Ranked only by real ratings (Google + Dalilak reviews). A paid subscription never affects this ranking." },
-    "picks": { "title": "Our favourites", "desc": "Businesses subscribed to Dalilak (paid placement), shown in rotation so each gets equal exposure." },
-    "saved": { "title": "Saved", "desc": "Places you save appear here." }
+    "top": {
+      "title": "Top rated",
+      "desc": "Ranked only by real ratings (Google + Dalilak reviews). A paid subscription never affects this ranking."
+    },
+    "picks": {
+      "title": "Our favourites",
+      "desc": "Businesses subscribed to Dalilak (paid placement), shown in rotation so each gets equal exposure."
+    },
+    "saved": {
+      "title": "Saved",
+      "desc": "Places you save appear here."
+    }
   },
   "settings": {
-    "title": "Settings", "language": "Language", "theme": "Appearance",
-    "themeSystem": "Device setting", "themeLight": "Light", "themeDark": "Dark",
-    "privacy": "Privacy policy", "terms": "Terms of use", "deleteAccount": "Delete my account"
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Appearance",
+    "themeSystem": "Device setting",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "deleteAccount": "Delete my account"
   },
   "install": {
     "ios": "To install Dalilak on iPhone: tap Share, then “Add to Home Screen”.",
     "dismiss": "Close"
   },
-  "common": { "soon": "Coming soon", "back": "Back to home" },
-  "notFound": { "title": "Page not found" }
+  "common": {
+    "soon": "Coming soon",
+    "back": "Back to home"
+  },
+  "notFound": {
+    "title": "Page not found"
+  },
+  "list": {
+    "reviews": "{{count}} reviews",
+    "noRating": "No rating yet",
+    "empty": "No results. Try another word or category.",
+    "loadMore": "Show more",
+    "loading": "Loading…",
+    "error": "Connection error. Please try again.",
+    "retry": "Retry",
+    "results": "Results",
+    "allListings": "All places",
+    "seeAll": "See all"
+  },
+  "listing": {
+    "call": "Call",
+    "directions": "Directions",
+    "website": "Website",
+    "share": "Share",
+    "save": "Save",
+    "saved": "Saved",
+    "report": "Report",
+    "address": "Address",
+    "phone": "Phone",
+    "languages": "Languages",
+    "rating": "Rating",
+    "googleRating": "Google rating",
+    "appRating": "Dalilak rating",
+    "offer": "Special offer",
+    "about": "About",
+    "photos": "Photos",
+    "reviews": "Reviews",
+    "noReviews": "No reviews yet.",
+    "writeReview": "Write a review",
+    "ownerReply": "Reply from the owner",
+    "anonymous": "User",
+    "claim": "Is this your business? Claim it",
+    "linkCopied": "Link copied",
+    "notFound": "This place does not exist or has been hidden.",
+    "featuredNote": "Business subscribed to Dalilak"
+  },
+  "langNames": {
+    "ar": "Arabic",
+    "fr": "French",
+    "nl": "Dutch",
+    "en": "English",
+    "de": "German",
+    "es": "Spanish",
+    "tr": "Turkish",
+    "ber": "Amazigh"
+  },
+  "auth": {
+    "loginTitle": "Log in",
+    "loginNeeded": "Log in to save places and see them on any device.",
+    "login": "Log in",
+    "soon": "Login comes in the next step."
+  },
+  "saved": {
+    "empty": "Nothing saved yet. Tap “Save” on a place’s page."
+  },
+  "soonPage": {
+    "report": "Report form",
+    "claim": "Claim this business"
+  },
+  "top": {
+    "rank": "#{{n}}"
+  }
 }

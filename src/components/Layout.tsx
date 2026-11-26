@@ -5,11 +5,17 @@ import { LANGS, LANG_NAMES, LANG_SHORT, dirOf, localePath, splitLocale, type Lan
 import { BottomNav } from './BottomNav'
 import { InstallHint } from './InstallHint'
 import { Logo } from './Logo'
+import { AuthProvider } from '../lib/auth'
+import { FavoritesProvider } from '../lib/favorites'
 
 export function Layout({ lang }: { lang: Lang }) {
   return (
     <LangContext.Provider value={lang}>
-      <Shell lang={lang} />
+      <AuthProvider>
+        <FavoritesProvider>
+          <Shell lang={lang} />
+        </FavoritesProvider>
+      </AuthProvider>
     </LangContext.Provider>
   )
 }
@@ -28,6 +34,7 @@ function Shell({ lang }: { lang: Lang }) {
         {siteUrl && LANGS.map((l) => (
           <link key={l} rel="alternate" hrefLang={l} href={`${siteUrl}${localePath(l, rest)}`} />
         ))}
+        {siteUrl && <link rel="canonical" href={`${siteUrl}${localePath(lang, rest)}`} />}
         {siteUrl && <link rel="alternate" hrefLang="x-default" href={`${siteUrl}${localePath('ar', rest)}`} />}
       </Head>
       <header className="header">
