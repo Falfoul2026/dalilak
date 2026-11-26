@@ -4,7 +4,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const LANGS = ['ar', 'fr', 'nl', 'en'] as const
-const STATIC_PATHS = ['/', '/top', '/picks']
+const STATIC_PATHS = ['/', '/top', '/picks', '/market', '/market/sell', '/add']
 
 const loc = (site: string, lang: string, path: string) => {
   const p = lang === 'ar' ? path : `/${lang}${path === '/' ? '' : path}`
@@ -12,8 +12,12 @@ const loc = (site: string, lang: string, path: string) => {
 }
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
-export function buildSitemap(site: string, slugs: string[], today = new Date().toISOString().slice(0, 10)): string {
-  const paths = [...STATIC_PATHS, ...slugs.map((s) => `/l/${encodeURIComponent(s)}`)]
+export function buildSitemap(site: string, slugs: string[], today = new Date().toISOString().slice(0, 10), adSlugs: string[] = []): string {
+  const paths = [
+    ...STATIC_PATHS,
+    ...slugs.map((s) => `/l/${encodeURIComponent(s)}`),
+    ...adSlugs.map((s) => `/market/${encodeURIComponent(s)}`),
+  ]
   const urls = paths.flatMap((path) =>
     LANGS.map((lang) => {
       const alts = LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${esc(loc(site, l, path))}"/>`).join('\n')
@@ -34,9 +38,13 @@ export async function writeSitemap(dir: string, env: Record<string, string>) {
   const res = await fetch(`${url}/rest/v1/listings?select=slug&status=eq.active&order=id`, { headers: { apikey: key } })
   if (!res.ok) throw new Error(`[sitemap] Supabase ${res.status}`)
   const slugs = ((await res.json()) as { slug: string }[]).map((r) => r.slug)
-  await writeFile(join(dir, 'sitemap.xml'), buildSitemap(site, slugs))
+  // Ads: only if the table exists (migration 0007) – never fail the build because of it.
+  let adSlugs: string[] = []
+  const adsRes = await fetch(`${url}/rest/v1/ads?select=slug&status=eq.active&order=id`, { headers: { apikey: key } }).catch(() => null)
+  if (adsRes?.ok) adSlugs = ((await adsRes.json()) as { slug: string }[]).map((r) => r.slug).filter(Boolean)
+  await writeFile(join(dir, 'sitemap.xml'), buildSitemap(site, slugs, undefined, adSlugs))
   const robotsPath = join(dir, 'robots.txt')
   const robots = await readFile(robotsPath, 'utf8').catch(() => 'User-agent: *\nAllow: /\n')
   await writeFile(robotsPath, `${robots.trimEnd()}\n\nSitemap: ${site}/sitemap.xml\n`)
-  console.log(`[sitemap] ${slugs.length} listings × ${LANGS.length} languages`)
+  console.log(`[sitemap] ${slugs.length} listings + ${adSlugs.length} ads × ${LANGS.length} languages`)
 }

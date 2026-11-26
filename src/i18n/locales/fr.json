@@ -14,7 +14,11 @@
   "home": {
     "searchPlaceholder": "Rechercher : restaurant, boucherie halal, médecin…",
     "allCategories": "Tout",
-    "allProvinces": "Toutes les régions"
+    "allProvinces": "Toutes les régions",
+    "choicePlaces": "Trouver des adresses",
+    "choicePlacesSub": "Restaurants, boucheries, médecins, mosquées…",
+    "choiceMarket": "Acheter & vendre",
+    "choiceMarketSub": "Commerces, immobilier, voitures, objets…"
   },
   "categories": {
     "food": "Restaurants",
@@ -204,7 +208,31 @@
     "delete": "Supprimer",
     "confirmDelete": "Supprimer cette photo ?",
     "saveFirst": "Enregistrez d’abord le commerce, puis ajoutez les photos.",
-    "galleryFull": "Maximum atteint (8 photos)."
+    "galleryFull": "Maximum atteint (8 photos).",
+    "tabShops": "Commerces",
+    "tabAds": "Annonces",
+    "addAd": "Ajouter une annonce",
+    "newAd": "Nouvelle annonce",
+    "editAd": "Modifier l’annonce",
+    "adTitle": "Titre",
+    "adCategory": "Rubrique",
+    "price": "Prix en euros (vide = sur demande)",
+    "adDescription": "Description",
+    "status": "Statut",
+    "statusActive": "Publiée",
+    "statusSold": "Vendue",
+    "statusHidden": "Masquée",
+    "markSold": "Marquer comme vendue",
+    "private": "Infos privées (jamais visibles)",
+    "commission": "Ma commission",
+    "sellerName": "Nom du vendeur",
+    "sellerPhone": "Téléphone du vendeur",
+    "notes": "Notes",
+    "adPhotos": "Photos ({{n}} sur {{max}})",
+    "makeCover": "Photo principale",
+    "cover": "Principale",
+    "adsCount": "{{count}} annonces",
+    "createAd": "Créer l’annonce"
   },
   "contact": {
     "title": "Ajoutez votre commerce",
@@ -217,6 +245,34 @@
   },
   "legal": {
     "privacyBody": "Dalilak ne demande pas de compte et n’utilise pas de cookies de suivi. Nous comptons seulement de façon anonyme les visites des pages, les clics sur appeler et itinéraire, et les recherches, sans aucune donnée sur vous. Les données sont hébergées chez Supabase (UE) et le site chez Netlify. Les infos des commerces viennent de Google Maps ou des commerçants. Pour corriger ou supprimer les infos d’un commerce, contactez-nous.",
-    "termsBody": "Dalilak est un guide gratuit. Nous faisons de notre mieux pour que les infos soient exactes, mais elles peuvent changer : vérifiez auprès du commerce avant de vous déplacer. Les commerces marqués « Sponsorisé » ont un abonnement Dalilak (publicité payante). Le classement « Les mieux notés » ne dépend pas du paiement."
+    "termsBody": "Dalilak est un guide gratuit. Nous faisons de notre mieux pour que les infos soient exactes, mais elles peuvent changer : vérifiez auprès du commerce avant de vous déplacer. Les commerces marqués « Sponsorisé » ont un abonnement Dalilak (publicité payante). Le classement « Les mieux notés » ne dépend pas du paiement. Annonces « Acheter & vendre » : Dalilak ne fait que mettre en contact et ne garantit pas les biens proposés ; vérifiez vous-même avant d’acheter."
+  },
+  "market": {
+    "title": "Acheter & vendre",
+    "desc": "Annonces de vente de la communauté arabe en Belgique. Pour toute question, écrivez-nous sur WhatsApp.",
+    "search": "Rechercher : voiture, appartement, commerce…",
+    "allCities": "Toutes les villes",
+    "sell": "Vous vendez quelque chose ?",
+    "empty": "Aucune annonce pour cette recherche pour le moment.",
+    "priceOnRequest": "Prix sur demande",
+    "sold": "Vendu",
+    "contact": "Nous contacter pour cette annonce (WhatsApp)",
+    "soldNote": "Cette annonce est vendue.",
+    "posted": "Publiée le {{date}}",
+    "back": "Toutes les annonces",
+    "adNumber": "Annonce n° {{id}}",
+    "notFound": "Cette annonce n’existe pas ou a été masquée.",
+    "middleman": "Dalilak assure le contact entre vous et le vendeur.",
+    "sellTitle": "Vendre quelque chose",
+    "sellIntro": "Vous vendez un commerce, un bien immobilier, une voiture ou des objets ? Envoyez-nous les détails et les photos sur WhatsApp : nous publions l’annonce et suivons les acheteurs.",
+    "sellButton": "Envoyer les détails sur WhatsApp",
+    "sellSteps": "Envoyez-nous : ce que vous vendez, la ville, le prix et des photos nettes (jusqu’à 8)."
+  },
+  "adCategories": {
+    "business": "Commerces à vendre",
+    "real_estate": "Immobilier",
+    "cars": "Voitures",
+    "furniture": "Meubles et objets",
+    "other": "Autres"
   }
 }

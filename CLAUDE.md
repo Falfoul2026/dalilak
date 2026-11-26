@@ -16,3 +16,6 @@
 - Current business model (decision by Yousef): no shop-owner login, no Stripe, no domain/emails for now.
   Shops pay Yousef directly; he adds/edits shops, uploads logo/photos and toggles Featured in /admin.
   Visitor accounts are behind `flags.userAccounts` (VITE_USER_ACCOUNTS, off).
+- Buy & Sell (`/market`, migration 0007): ads are created only by the admin (`/admin/ads`). Buyers contact Yousef on
+  WhatsApp (never the seller). Seller details and commission live in `ads_private` (admin-only RLS) – never select
+  them in public code. No payments in the app.

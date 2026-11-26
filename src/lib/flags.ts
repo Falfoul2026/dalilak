@@ -19,6 +19,8 @@ export const contact = {
 export const WHATSAPP_MESSAGES = {
   addShop: 'مرحبا، عندي محل/خدمة وبدي أضيفه على دليلك',
   report: 'مرحبا، لاحظت معلومات خاطئة أو محل مسكّر على دليلك',
+  adInterest: 'مرحبا، أنا مهتم بالإعلان',
+  sell: 'مرحبا، بدي أبيع شي على دليلك. هاي التفاصيل:\n- شو بدي أبيع:\n- المدينة:\n- السعر:\n(ببعتلك الصور هون)',
 } as const
 
 /** wa.me link with a pre-filled message, or null when no number is configured. */

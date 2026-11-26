@@ -33,3 +33,14 @@ export function allActiveListings(): Promise<Listing[]> {
 }
 
 export const topRatedAll = () => once('top', () => (supabase ? topRated(null, null, 50) : Promise.resolve([])))
+
+/** Visible ads for pre-rendering. Never fails the build (e.g. before migration 0007 is run). */
+export const allVisibleAds = () => once('ads', async () => {
+  try {
+    const { fetchAds } = await import('./market')
+    return await fetchAds()
+  } catch (e) {
+    console.warn('[build] ads skipped:', (e as Error).message)
+    return []
+  }
+})

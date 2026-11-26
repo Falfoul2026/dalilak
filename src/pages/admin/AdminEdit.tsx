@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useLang, useT } from '../../i18n'
+import { backArrow } from '../../lib/format'
 import { LANGS, LANG_NAMES, localePath } from '../../i18n/langs'
 import { AdminGate } from '../../components/AdminGate'
 import { Loading } from '../../components/ListState'
@@ -73,7 +74,7 @@ function AdminEdit() {
 
   return (
     <section className="stack">
-      <Link to={localePath(lang, '/admin')}>← {t('admin.back')}</Link>
+      <Link to={localePath(lang, '/admin')}>{backArrow(lang)} {t('admin.back')}</Link>
       <h1 className="page-title" style={{ marginTop: 0 }} dir="auto">{id ? listing?.name ?? t('admin.editShop') : t('admin.newShop')}</h1>
       {listing && listing.status === 'active' && (
         <a href={localePath(lang, `/l/${listing.slug}`)} target="_blank" rel="noopener">{t('admin.view')} ↗</a>

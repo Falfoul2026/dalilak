@@ -4,6 +4,7 @@ import { useT } from '../i18n'
 import { IconSearch } from '../components/Icons'
 import { CategoryChips, ProvinceSelect } from '../components/Filters'
 import { FeaturedCarousel } from '../components/FeaturedCarousel'
+import { SectionSwitch } from '../components/SectionSwitch'
 import { ListingCard } from '../components/ListingCard'
 import { Empty, ErrorBox, Loading } from '../components/ListState'
 import { PAGE_SIZE, logSearch, searchListings } from '../lib/listings'
@@ -66,6 +67,7 @@ export function Component() {
   const filtered = !isDefault
   return (
     <>
+      <SectionSwitch active="places" />
       <form className="search" role="search" onSubmit={(e) => e.preventDefault()}>
         <label className="visually-hidden" htmlFor="q">{t('home.searchPlaceholder')}</label>
         <IconSearch />

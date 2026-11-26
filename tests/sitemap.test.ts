@@ -5,11 +5,16 @@ import { directionsUrl, pickLang, safeWebsite, telHref } from '../src/lib/format
 describe('sitemap', () => {
   const xml = buildSitemap('https://dalilak.be', ['baladi-bruxelles'], '2026-11-26')
   it('has every page in every language with alternates', () => {
-    expect(xml.match(/<url>/g)).toHaveLength((3 + 1) * 4)
+    expect(xml.match(/<url>/g)).toHaveLength((6 + 1) * 4)
     expect(xml).toContain('<loc>https://dalilak.be/l/baladi-bruxelles</loc>')
     expect(xml).toContain('<loc>https://dalilak.be/fr/l/baladi-bruxelles</loc>')
     expect(xml).toContain('<loc>https://dalilak.be/nl</loc>')
     expect(xml).toContain('hreflang="x-default" href="https://dalilak.be/top"')
+  })
+  it('includes ads', () => {
+    const x = buildSitemap('https://dalilak.be', [], '2026-11-26', ['12-toyota'])
+    expect(x).toContain('<loc>https://dalilak.be/market/12-toyota</loc>')
+    expect(x).toContain('<loc>https://dalilak.be/en/market/12-toyota</loc>')
   })
 })
 

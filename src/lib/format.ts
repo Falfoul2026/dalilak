@@ -42,3 +42,6 @@ export function normalizeForSearch(s: string): string {
     .replace(/[\u0300-\u036f\u064B-\u0655\u0640]/g, '')
     .trim()
 }
+
+/** "Back" arrow that points the right way for the reading direction. */
+export const backArrow = (lang: Lang) => (lang === 'ar' ? '→' : '←')

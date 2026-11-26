@@ -14,7 +14,11 @@
   "home": {
     "searchPlaceholder": "Zoek: restaurant, halal slager, dokter…",
     "allCategories": "Alles",
-    "allProvinces": "Alle regio’s"
+    "allProvinces": "Alle regio’s",
+    "choicePlaces": "Adressen zoeken",
+    "choicePlacesSub": "Restaurants, slagers, artsen, moskeeën…",
+    "choiceMarket": "Kopen & verkopen",
+    "choiceMarketSub": "Zaken, vastgoed, auto’s, spullen…"
   },
   "categories": {
     "food": "Restaurants",
@@ -204,7 +208,31 @@
     "delete": "Verwijderen",
     "confirmDelete": "Deze foto verwijderen?",
     "saveFirst": "Sla de zaak eerst op en voeg dan foto’s toe.",
-    "galleryFull": "Maximum bereikt (8 foto’s)."
+    "galleryFull": "Maximum bereikt (8 foto’s).",
+    "tabShops": "Zaken",
+    "tabAds": "Advertenties",
+    "addAd": "Advertentie toevoegen",
+    "newAd": "Nieuwe advertentie",
+    "editAd": "Advertentie bewerken",
+    "adTitle": "Titel",
+    "adCategory": "Rubriek",
+    "price": "Prijs in euro (leeg = op aanvraag)",
+    "adDescription": "Beschrijving",
+    "status": "Status",
+    "statusActive": "Gepubliceerd",
+    "statusSold": "Verkocht",
+    "statusHidden": "Verborgen",
+    "markSold": "Markeer als verkocht",
+    "private": "Privé-info (nooit zichtbaar)",
+    "commission": "Mijn commissie",
+    "sellerName": "Naam verkoper",
+    "sellerPhone": "Telefoon verkoper",
+    "notes": "Notities",
+    "adPhotos": "Foto’s ({{n}} van {{max}})",
+    "makeCover": "Hoofdfoto maken",
+    "cover": "Hoofdfoto",
+    "adsCount": "{{count}} advertenties",
+    "createAd": "Advertentie aanmaken"
   },
   "contact": {
     "title": "Voeg je zaak toe",
@@ -217,6 +245,34 @@
   },
   "legal": {
     "privacyBody": "Dalilak vraagt geen account en gebruikt geen trackingcookies. We tellen alleen anoniem paginabezoeken, klikken op bellen en route, en zoekopdrachten, zonder gegevens over jou. De gegevens staan bij Supabase (EU) en de site bij Netlify. De info over zaken komt van Google Maps of van de zaken zelf. Om info van een zaak te verbeteren of te verwijderen, neem contact op.",
-    "termsBody": "Dalilak is een gratis gids. We doen ons best om de info juist te houden, maar ze kan wijzigen: check bij de zaak voor je gaat. Zaken met ‘Gesponsord’ hebben een Dalilak-abonnement (betaalde vermelding). De rangorde ‘Best beoordeeld’ hangt niet af van betaling."
+    "termsBody": "Dalilak is een gratis gids. We doen ons best om de info juist te houden, maar ze kan wijzigen: check bij de zaak voor je gaat. Zaken met ‘Gesponsord’ hebben een Dalilak-abonnement (betaalde vermelding). De rangorde ‘Best beoordeeld’ hangt niet af van betaling. Advertenties ‘Kopen & verkopen’: Dalilak brengt alleen partijen in contact en geeft geen garantie op wat te koop staat; controleer zelf voor je koopt."
+  },
+  "market": {
+    "title": "Kopen & verkopen",
+    "desc": "Verkoopadvertenties van de Arabische gemeenschap in België. Vragen? Stuur ons een bericht op WhatsApp.",
+    "search": "Zoek: auto, appartement, zaak…",
+    "allCities": "Alle steden",
+    "sell": "Iets te koop?",
+    "empty": "Nog geen advertenties voor deze zoekopdracht.",
+    "priceOnRequest": "Prijs op aanvraag",
+    "sold": "Verkocht",
+    "contact": "Contacteer ons over deze advertentie (WhatsApp)",
+    "soldNote": "Deze advertentie is verkocht.",
+    "posted": "Geplaatst op {{date}}",
+    "back": "Alle advertenties",
+    "adNumber": "Advertentie nr. {{id}}",
+    "notFound": "Deze advertentie bestaat niet of is verborgen.",
+    "middleman": "Dalilak regelt het contact tussen jou en de verkoper.",
+    "sellTitle": "Iets verkopen",
+    "sellIntro": "Verkoop je een zaak, vastgoed, een auto of spullen? Stuur ons de details en foto’s via WhatsApp: wij plaatsen de advertentie en volgen de kopers op.",
+    "sellButton": "Stuur de details via WhatsApp",
+    "sellSteps": "Stuur ons: wat je verkoopt, de stad, de prijs en duidelijke foto’s (max. 8)."
+  },
+  "adCategories": {
+    "business": "Zaken te koop",
+    "real_estate": "Vastgoed",
+    "cars": "Auto’s",
+    "furniture": "Meubels en spullen",
+    "other": "Andere"
   }
 }

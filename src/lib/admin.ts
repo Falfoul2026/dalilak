@@ -1,6 +1,7 @@
 // Admin panel data access. Every write goes through admin_* SQL functions that
 // check is_admin() on the server, so these calls are useless to anyone else.
 import { LISTING_COLUMNS } from './listings'
+import { AD_COLUMNS, type Ad, type AdCategory, type AdPhoto, type AdStatus } from './market'
 import { supabase } from './supabase'
 import type { Listing } from './types'
 
@@ -119,7 +120,7 @@ export async function adminDeletePhoto(photoId: number): Promise<void> {
   if (data) await db().storage.from(BUCKET).remove([data as string])
 }
 
-async function resizeImage(file: File, max: number, quality: number, keepAlpha: boolean): Promise<{ blob: Blob; ext: string }> {
+export async function resizeImage(file: File, max: number, quality: number, keepAlpha: boolean): Promise<{ blob: Blob; ext: string }> {
   if (!file.type.startsWith('image/')) throw new Error('not_an_image')
   const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' })
   const scale = Math.min(1, max / Math.max(bmp.width, bmp.height))
@@ -143,4 +144,84 @@ async function resizeImage(file: File, max: number, quality: number, keepAlpha: 
   const blob = await toBlob(fallbackType)
   if (!blob) throw new Error('resize_failed')
   return { blob, ext: fallbackType === 'image/png' ? 'png' : 'jpg' }
+}
+
+// ---------------------------------------------------------------------------
+// Buy & Sell ads
+// ---------------------------------------------------------------------------
+
+export interface AdInput {
+  title: string
+  category: AdCategory
+  city: string
+  price_eur: string
+  description: string
+  status: AdStatus
+  commission: string
+  seller_name: string
+  seller_phone: string
+  notes: string
+}
+
+export interface AdPrivate { commission: string | null; seller_name: string | null; seller_phone: string | null; notes: string | null }
+
+const AD_BUCKET = 'ad-photos'
+export const MAX_AD_PHOTOS = 8
+
+export async function adminAllAds(): Promise<Ad[]> {
+  const { data, error } = await db().from('ads').select(AD_COLUMNS).order('created_at', { ascending: false }).limit(1000)
+  if (error) throw error
+  return data as Ad[]
+}
+
+export async function adminGetAd(id: number): Promise<{ ad: Ad; priv: AdPrivate | null } | null> {
+  const [{ data: ad, error }, { data: priv }] = await Promise.all([
+    db().from('ads').select(AD_COLUMNS).eq('id', id).maybeSingle(),
+    db().from('ads_private').select('commission,seller_name,seller_phone,notes').eq('ad_id', id).maybeSingle(),
+  ])
+  if (error) throw error
+  return ad ? { ad: ad as Ad, priv: (priv as AdPrivate | null) ?? null } : null
+}
+
+/** Create (id null) or update. Returns the id. Price: digits, comma or dot accepted. */
+export async function adminSaveAd(id: number | null, v: AdInput): Promise<number> {
+  const price = v.price_eur.trim().replace(/\s/g, '').replace(',', '.')
+  if (price && !/^\d+(\.\d{1,2})?$/.test(price)) throw new Error('price')
+  const { data, error } = await db().rpc('admin_save_ad', { p_id: id, p: { ...v, price_eur: price } })
+  if (error) throw error
+  return data as number
+}
+
+export async function adminSetAdStatus(id: number, status: AdStatus): Promise<void> {
+  const { error } = await db().rpc('admin_set_ad_status', { p_id: id, p_status: status })
+  if (error) throw error
+}
+
+export async function adminAdPhotos(adId: number): Promise<AdPhoto[]> {
+  const { data, error } = await db().from('ad_photos').select('id,storage_path,sort_order').eq('ad_id', adId).order('sort_order').order('id')
+  if (error) throw error
+  return data as AdPhoto[]
+}
+
+export async function adminUploadAdPhoto(adId: number, file: File): Promise<void> {
+  const { blob, ext } = await resizeImage(file, 1200, 0.8, false)
+  const path = `${adId}/${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}.${ext}`
+  const up = await db().storage.from(AD_BUCKET).upload(path, blob, { contentType: blob.type, cacheControl: '31536000', upsert: false })
+  if (up.error) throw up.error
+  const { error } = await db().rpc('admin_add_ad_photo', { p_ad_id: adId, p_path: path })
+  if (error) {
+    await db().storage.from(AD_BUCKET).remove([path])
+    throw error
+  }
+}
+
+export async function adminDeleteAdPhoto(photoId: number): Promise<void> {
+  const { data, error } = await db().rpc('admin_delete_ad_photo', { p_photo_id: photoId })
+  if (error) throw error
+  if (data) await db().storage.from(AD_BUCKET).remove([data as string])
+}
+
+export async function adminSetAdCover(photoId: number): Promise<void> {
+  const { error } = await db().rpc('admin_set_ad_cover', { p_photo_id: photoId })
+  if (error) throw error
 }

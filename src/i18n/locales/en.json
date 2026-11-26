@@ -14,7 +14,11 @@
   "home": {
     "searchPlaceholder": "Search: restaurant, halal butcher, doctor…",
     "allCategories": "All",
-    "allProvinces": "All regions"
+    "allProvinces": "All regions",
+    "choicePlaces": "Find places",
+    "choicePlacesSub": "Restaurants, butchers, doctors, mosques…",
+    "choiceMarket": "Buy & sell",
+    "choiceMarketSub": "Businesses, property, cars, items…"
   },
   "categories": {
     "food": "Restaurants",
@@ -204,7 +208,31 @@
     "delete": "Delete",
     "confirmDelete": "Delete this photo?",
     "saveFirst": "Save the shop first, then add photos.",
-    "galleryFull": "Limit reached (8 photos)."
+    "galleryFull": "Limit reached (8 photos).",
+    "tabShops": "Shops",
+    "tabAds": "Ads",
+    "addAd": "Add an ad",
+    "newAd": "New ad",
+    "editAd": "Edit ad",
+    "adTitle": "Title",
+    "adCategory": "Section",
+    "price": "Price in euros (empty = on request)",
+    "adDescription": "Description",
+    "status": "Status",
+    "statusActive": "Published",
+    "statusSold": "Sold",
+    "statusHidden": "Hidden",
+    "markSold": "Mark as sold",
+    "private": "Private info (never shown)",
+    "commission": "My commission",
+    "sellerName": "Seller name",
+    "sellerPhone": "Seller phone",
+    "notes": "Notes",
+    "adPhotos": "Photos ({{n}} of {{max}})",
+    "makeCover": "Make main photo",
+    "cover": "Main",
+    "adsCount": "{{count}} ads",
+    "createAd": "Create ad"
   },
   "contact": {
     "title": "Add your shop",
@@ -217,6 +245,34 @@
   },
   "legal": {
     "privacyBody": "Dalilak asks for no account and uses no tracking cookies. We only count, anonymously, page visits, taps on call and directions, and searches, without any data about you. Data is stored with Supabase (EU) and the site is hosted by Netlify. Shop details come from Google Maps or from the shops themselves. To correct or remove a shop’s details, contact us.",
-    "termsBody": "Dalilak is a free guide. We do our best to keep details correct, but they can change: check with the shop before you go. Shops marked “Featured” have a Dalilak subscription (paid placement). The “Top rated” ranking does not depend on payment."
+    "termsBody": "Dalilak is a free guide. We do our best to keep details correct, but they can change: check with the shop before you go. Shops marked “Featured” have a Dalilak subscription (paid placement). The “Top rated” ranking does not depend on payment. “Buy & sell” ads: Dalilak only puts people in touch and does not guarantee the items offered; check for yourself before buying."
+  },
+  "market": {
+    "title": "Buy & sell",
+    "desc": "Sale ads from the Arab community in Belgium. Questions? Message us on WhatsApp.",
+    "search": "Search: car, flat, shop…",
+    "allCities": "All cities",
+    "sell": "Selling something?",
+    "empty": "No ads for this search yet.",
+    "priceOnRequest": "Price on request",
+    "sold": "Sold",
+    "contact": "Contact us about this ad (WhatsApp)",
+    "soldNote": "This item has been sold.",
+    "posted": "Posted {{date}}",
+    "back": "All ads",
+    "adNumber": "Ad #{{id}}",
+    "notFound": "This ad does not exist or has been hidden.",
+    "middleman": "Dalilak handles the contact between you and the seller.",
+    "sellTitle": "Sell something",
+    "sellIntro": "Selling a business, property, a car or items? Send us the details and photos on WhatsApp: we post the ad and follow up with buyers.",
+    "sellButton": "Send the details on WhatsApp",
+    "sellSteps": "Send us: what you sell, the city, the price and clear photos (up to 8)."
+  },
+  "adCategories": {
+    "business": "Businesses for sale",
+    "real_estate": "Real estate",
+    "cars": "Cars",
+    "furniture": "Furniture & items",
+    "other": "Other"
   }
 }

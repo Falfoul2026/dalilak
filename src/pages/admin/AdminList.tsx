@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { useLang, useT } from '../../i18n'
 import { localePath } from '../../i18n/langs'
 import { AdminGate } from '../../components/AdminGate'
+import { AdminTabs } from '../../components/AdminTabs'
 import { FeaturedBadge } from '../../components/Badges'
 import { ErrorBox, Loading } from '../../components/ListState'
 import { adminAllListings, adminSetFeatured } from '../../lib/admin'
 import { normalizeForSearch } from '../../lib/format'
-import { supabase } from '../../lib/supabase'
 import type { Listing } from '../../lib/types'
 
 type Show = 'all' | 'featured' | 'hidden'
@@ -52,10 +52,7 @@ function AdminList() {
 
   return (
     <section className="stack">
-      <div className="section-head">
-        <h1 className="page-title" style={{ margin: 0 }}>{t('admin.title')}</h1>
-        <button type="button" className="btn-link" onClick={() => void supabase?.auth.signOut()}>{t('admin.signOut')}</button>
-      </div>
+      <AdminTabs active="shops" />
       <Link className="btn" to={localePath(lang, '/admin/new')}>+ {t('admin.addShop')}</Link>
       <input className="input" type="search" placeholder={t('admin.search')} value={q} onChange={(e) => setQ(e.target.value)} />
       <div className="segmented">

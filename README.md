@@ -56,3 +56,9 @@ Log in with the admin account (email + password created in Supabase → Authenti
 `select public.bootstrap_admin('email')`). From there: add/edit shops, upload logo (1) and photos (max 8, resized in
 the browser), Featured on/off with optional end date, hide/show. Needs migration `20261126000006_admin_tools.sql`.
 A new shop is live at once; its pre-rendered page for Google comes with the next Netlify deploy.
+
+## Buy & Sell (`/market`)
+
+Ads are managed in `/admin/ads` (needs migration `20261126000007_marketplace.sql`): title, section, city, price
+(empty = on request), description, up to 8 photos (first = cover), status active/sold/hidden, and private fields
+(commission, seller name/phone, notes) stored in `ads_private`, readable by the admin only.
