@@ -11,9 +11,18 @@
     "test": "vitest run",
     "import": "tsx scripts/import-data.ts",
     "db:bundle": "tsx scripts/bundle-sql.ts",
-    "db:test": "bash scripts/db-test.sh"
+    "db:test": "bash scripts/db-test.sh",
+    "build:app": "CAP_BUILD=1 vite-react-ssg build && cap sync android",
+    "android:apk": "npm run build:app && cd android && ./gradlew assembleRelease",
+    "android:aab": "npm run build:app && cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
+    "@capacitor/android": "^8.6.3",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.3",
+    "@capacitor/share": "^8.0.3",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4",
     "@fontsource/cairo": "^5.3.0",
     "@fontsource/tajawal": "^5.3.0",
     "@supabase/supabase-js": "^2.119.2",
@@ -25,6 +34,8 @@
     "vite-react-ssg": "^0.9.2"
   },
   "devDependencies": {
+    "@capacitor/assets": "^4.0.0",
+    "@capacitor/cli": "^8.6.3",
     "@types/node": "^26.6.11",
     "@types/pg": "^8.23.1",
     "@types/react": "^19.3.3",

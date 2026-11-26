@@ -274,7 +274,9 @@
   },
   "legal": {
     "privacyBody": "Dalilak ne demande pas de compte et n’utilise pas de cookies de suivi. Nous comptons seulement de façon anonyme les visites des pages, les clics sur appeler et itinéraire, et les recherches, sans aucune donnée sur vous. Les données sont hébergées chez Supabase (UE) et le site chez Netlify. Les infos des commerces viennent de Google Maps ou des commerçants. Pour corriger ou supprimer les infos d’un commerce, contactez-nous.",
-    "termsBody": "Dalilak est un guide gratuit. Nous faisons de notre mieux pour que les infos soient exactes, mais elles peuvent changer : vérifiez auprès du commerce avant de vous déplacer. Les commerces marqués « Sponsorisé » ont un abonnement Dalilak (publicité payante). Le classement « Les mieux notés » ne dépend pas du paiement. Annonces « Acheter & vendre » : Dalilak ne fait que mettre en contact et ne garantit pas les biens proposés ; vérifiez vous-même avant d’acheter."
+    "termsBody": "Dalilak est un guide gratuit. Nous faisons de notre mieux pour que les infos soient exactes, mais elles peuvent changer : vérifiez auprès du commerce avant de vous déplacer. Les commerces marqués « Sponsorisé » ont un abonnement Dalilak (publicité payante). Le classement « Les mieux notés » ne dépend pas du paiement. Annonces « Acheter & vendre » : Dalilak ne fait que mettre en contact et ne garantit pas les biens proposés ; vérifiez vous-même avant d’acheter.",
+    "contactLine": "Contact pour la vie privée, ou pour corriger ou supprimer des infos (WhatsApp) :",
+    "appNote": "L’application Android Dalilak affiche le même contenu que le site, ne demande aucune autorisation particulière (ni position, ni contacts, ni caméra) et ne collecte aucune donnée personnelle des visiteurs."
   },
   "market": {
     "title": "Acheter & vendre",

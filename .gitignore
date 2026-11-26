@@ -8,3 +8,9 @@ dist
 android/app/release
 *.keystore
 *.jks
+dist-app
+android/keystore.properties
+android/app/build
+android/build
+android/.gradle
+android/local.properties

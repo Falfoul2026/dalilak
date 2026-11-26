@@ -68,3 +68,17 @@ Ads are managed in `/admin/ads` (needs migration `20261126000007_marketplace.sql
 Needs migration `20261126000008_banners.sql`. A banner shows on the home page while it is visible, has an image, and
 today (Brussels) is within its start/end dates; it disappears by itself after the end date. Private fields
 (advertiser, price paid, notes) are in `banners_private`, admin-only.
+
+## Android app (Capacitor, `android/`)
+
+- App id `com.dalilak.app`, name «دليلك». The web code is built with `CAP_BUILD=1` into `dist-app/` (no service worker,
+  no sitemap) and copied into the app by `npx cap sync android`.
+- Needs JDK 21 and the Android SDK (platform 36, build-tools). Set `ANDROID_HOME`.
+- Release signing uses the **upload key**, kept outside the repo. Point `DALILAK_SIGNING` to its `keystore.properties`
+  (storeFile, storePassword, keyAlias, keyPassword), then:
+  - `npm run android:aab` → `android/app/build/outputs/bundle/release/app-release.aab` (Google Play)
+  - `npm run android:apk` → `android/app/build/outputs/apk/release/app-release.apk` (install directly for testing)
+- Before every new Play upload raise `versionCode` (and `versionName`) in `android/app/build.gradle`.
+- Icons/splash: `node scripts/make-app-assets.cjs && npx capacitor-assets generate --android ...` (sources in `assets/`);
+  Play Store graphics in `store/`.
+- Privacy policy URL for Play: https://dalilak-mmn4.netlify.app/privacy

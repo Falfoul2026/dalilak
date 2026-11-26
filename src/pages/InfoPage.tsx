@@ -17,8 +17,15 @@ function LegalPage({ which }: { which: 'privacy' | 'terms' }) {
   return (
     <section>
       <h1 className="page-title">{t(`settings.${which}`)}</h1>
-      <div className="card"><p style={{ margin: 0 }}>{t(`legal.${which}Body`)}</p></div>
-      {contact.email && <p className="muted"><a href={`mailto:${contact.email}`} dir="ltr">{contact.email}</a></p>}
+      <div className="card stack">
+        <p style={{ margin: 0 }}>{t(`legal.${which}Body`)}</p>
+        {which === 'privacy' && <p style={{ margin: 0 }}>{t('legal.appNote')}</p>}
+      </div>
+      <p className="muted">
+        {t('legal.contactLine')}{' '}
+        {contact.whatsapp && <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noopener" dir="ltr">+{contact.whatsapp}</a>}
+        {contact.email && <> · <a href={`mailto:${contact.email}`} dir="ltr">{contact.email}</a></>}
+      </p>
     </section>
   )
 }

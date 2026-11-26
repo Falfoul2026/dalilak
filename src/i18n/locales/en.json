@@ -274,7 +274,9 @@
   },
   "legal": {
     "privacyBody": "Dalilak asks for no account and uses no tracking cookies. We only count, anonymously, page visits, taps on call and directions, and searches, without any data about you. Data is stored with Supabase (EU) and the site is hosted by Netlify. Shop details come from Google Maps or from the shops themselves. To correct or remove a shop’s details, contact us.",
-    "termsBody": "Dalilak is a free guide. We do our best to keep details correct, but they can change: check with the shop before you go. Shops marked “Featured” have a Dalilak subscription (paid placement). The “Top rated” ranking does not depend on payment. “Buy & sell” ads: Dalilak only puts people in touch and does not guarantee the items offered; check for yourself before buying."
+    "termsBody": "Dalilak is a free guide. We do our best to keep details correct, but they can change: check with the shop before you go. Shops marked “Featured” have a Dalilak subscription (paid placement). The “Top rated” ranking does not depend on payment. “Buy & sell” ads: Dalilak only puts people in touch and does not guarantee the items offered; check for yourself before buying.",
+    "contactLine": "Contact about privacy, or to correct or remove details (WhatsApp):",
+    "appNote": "The Dalilak Android app shows the same content as the website, asks for no special permissions (no location, contacts or camera) and collects no personal data about visitors."
   },
   "market": {
     "title": "Buy & sell",

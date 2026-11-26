@@ -4,10 +4,14 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { writeSitemap } from './scripts/sitemap'
 import { writeSpaShell } from './scripts/spaShell'
 
+// CAP_BUILD=1: build for the Android app (no service worker, no sitemap, output in dist-app/).
+const appBuild = Boolean(process.env.CAP_BUILD)
+
 export default defineConfig(({ mode }) => ({
+  build: { outDir: appBuild ? 'dist-app' : 'dist' },
   plugins: [
     react(),
-    VitePWA({
+    !appBuild && VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'script-defer',
       includeAssets: ['icons/favicon.svg', 'icons/apple-touch-icon.png'],
@@ -55,7 +59,7 @@ export default defineConfig(({ mode }) => ({
     concurrency: 8,
     onFinished: async (dir: string) => {
       await writeSpaShell(dir)
-      await writeSitemap(dir, loadEnv(mode, process.cwd(), 'VITE_'))
+      if (!appBuild) await writeSitemap(dir, loadEnv(mode, process.cwd(), 'VITE_'))
     },
   },
   test: {

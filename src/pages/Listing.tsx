@@ -13,6 +13,7 @@ import { directionsUrl, formatDate, formatRating, pickLang, safeWebsite, telHref
 import { getListingBySlug, listingPhotos, listingReviews, photoUrl, track } from '../lib/listings'
 import { isSupabaseConfigured } from '../lib/supabase'
 import { WHATSAPP_MESSAGES, flags, whatsappLink } from '../lib/flags'
+import { publicUrl, shareLink } from '../lib/native'
 import type { Listing, Photo, Review } from '../lib/types'
 
 /** Build time: listing data goes into the static HTML for Google. */
@@ -85,10 +86,10 @@ export function Component() {
 
   const share = async () => {
     track(l.id, 'share')
-    const url = typeof window !== 'undefined' ? window.location.href.split('?')[0] : pageUrl ?? ''
+    // always the public website address (inside the app the page itself is on https://localhost)
+    const url = publicUrl(localePath(lang, `/l/${l.slug}`))
     try {
-      if (navigator.share) await navigator.share({ title: l.name, text: `${l.name} – ${kind}`, url })
-      else {
+      if (!(await shareLink({ title: l.name, text: `${l.name} – ${kind}`, url }))) {
         await navigator.clipboard.writeText(url)
         setToast(t('listing.linkCopied'))
         setTimeout(() => setToast(''), 2500)

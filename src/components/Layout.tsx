@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { LangContext, useT } from '../i18n'
@@ -7,6 +8,7 @@ import { InstallHint } from './InstallHint'
 import { Logo } from './Logo'
 import { AuthProvider } from '../lib/auth'
 import { FavoritesProvider } from '../lib/favorites'
+import { initNative } from '../lib/native'
 
 export function Layout({ lang }: { lang: Lang }) {
   return (
@@ -22,6 +24,7 @@ export function Layout({ lang }: { lang: Lang }) {
 
 function Shell({ lang }: { lang: Lang }) {
   const t = useT()
+  useEffect(() => { void initNative() }, [])
   const { pathname } = useLocation()
   const rest = splitLocale(pathname).rest
   const siteUrl = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '')

@@ -274,7 +274,9 @@
   },
   "legal": {
     "privacyBody": "Dalilak vraagt geen account en gebruikt geen trackingcookies. We tellen alleen anoniem paginabezoeken, klikken op bellen en route, en zoekopdrachten, zonder gegevens over jou. De gegevens staan bij Supabase (EU) en de site bij Netlify. De info over zaken komt van Google Maps of van de zaken zelf. Om info van een zaak te verbeteren of te verwijderen, neem contact op.",
-    "termsBody": "Dalilak is een gratis gids. We doen ons best om de info juist te houden, maar ze kan wijzigen: check bij de zaak voor je gaat. Zaken met ‘Gesponsord’ hebben een Dalilak-abonnement (betaalde vermelding). De rangorde ‘Best beoordeeld’ hangt niet af van betaling. Advertenties ‘Kopen & verkopen’: Dalilak brengt alleen partijen in contact en geeft geen garantie op wat te koop staat; controleer zelf voor je koopt."
+    "termsBody": "Dalilak is een gratis gids. We doen ons best om de info juist te houden, maar ze kan wijzigen: check bij de zaak voor je gaat. Zaken met ‘Gesponsord’ hebben een Dalilak-abonnement (betaalde vermelding). De rangorde ‘Best beoordeeld’ hangt niet af van betaling. Advertenties ‘Kopen & verkopen’: Dalilak brengt alleen partijen in contact en geeft geen garantie op wat te koop staat; controleer zelf voor je koopt.",
+    "contactLine": "Contact over privacy, of om info te verbeteren of te verwijderen (WhatsApp):",
+    "appNote": "De Android-app van Dalilak toont dezelfde inhoud als de website, vraagt geen bijzondere toestemmingen (geen locatie, contacten of camera) en verzamelt geen persoonsgegevens van bezoekers."
   },
   "market": {
     "title": "Kopen & verkopen",

@@ -22,3 +22,5 @@
 - Banner ads (migration 0008): `banners` are public only while visible, with an image, and today (Brussels) is
   between `starts_on` and `ends_on` (RLS does this). Advertiser/price/notes live in `banners_private` (admin-only).
   Every banner is labelled "إعلان" and links use rel="sponsored".
+- Android: never commit the upload key or its passwords (kept outside the repo, `DALILAK_SIGNING`). Raise
+  `versionCode` for every Play upload. The app build (`CAP_BUILD=1`) must not register a service worker.
