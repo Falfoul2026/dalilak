@@ -11,3 +11,5 @@
   so pre-rendering never mixes languages. Every new string goes in all four locale files (a test checks).
 - The Android app must never show a purchase button or payment link (`isNativeApp()`).
 - Paid placement is always labelled "مميّز / Featured" (EU law).
+- Free listing shows only: name, category, address, phone, Google rating, directions.
+  Premium only: website link, logo, gallery (max 8), description, offer line, verified badge, stats (decision by Yousef).

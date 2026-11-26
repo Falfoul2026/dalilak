@@ -25,15 +25,16 @@ $$;
 grant execute on function public.t_as(uuid) to anon, authenticated;
 
 -- ---------------------------------------------------------------- import
-select t_assert((select count(*) from listings) = 265, 'all listings imported');
+select t_assert((select count(*) from listings) = 266, 'all listings imported');
 select t_assert((select count(*) from listings where not language_verified and languages = '{}') = 62, '62 unverified');
 select t_assert((select is_premium and premium_until is null and is_verified from listings where id = 1), 'Falfoul premium forever');
 select t_assert((select count(*) from listings where is_premium) = 1, 'only Falfoul premium');
 select t_assert((select province from listings where id = 56) = 'flemish-brabant', 'Grimbergen province');
-select t_assert((select count(distinct slug) from listings) = 265, 'unique slugs');
+select t_assert((select count(distinct slug) from listings) = 266, 'unique slugs');
+select t_assert((select slug = 'smoke-house-chef-khalil-bruxelles' and category = 'food' and not is_premium from listings where id = 266), 'Smoke House imported');
 select t_assert((select slug from listings where id = 1) = 'm-et-mme-falfoul-bruxelles', 'slug of id 1: ' || (select slug from listings where id = 1));
 select t_assert((select status from listings where id = 1) = 'active', 'active');
-select t_assert(nextval(pg_get_serial_sequence('public.listings', 'id')) > 265, 'sequence after import');
+select t_assert(nextval(pg_get_serial_sequence('public.listings', 'id')) > 266, 'sequence after import');
 
 -- users
 insert into auth.users (id, email, raw_user_meta_data) values
@@ -49,7 +50,7 @@ select t_assert((select owner_id from listings where id = 1) = '00000000-0000-00
 -- ---------------------------------------------------------------- visitor
 set role anon;
 select t_as(null);
-select t_assert((select count(*) from listings) = 265, 'anon sees active listings');
+select t_assert((select count(*) from listings) = 266, 'anon sees active listings');
 select t_fails($$ insert into listings (slug, name, category, province, source) values ('x','xx','food','brussels','owner') $$, 'anon cannot insert listing');
 select t_fails($$ update listings set is_premium = true where id = 2 $$, 'anon cannot update');
 select t_fails($$ delete from listings where id = 2 $$, 'anon cannot delete');
@@ -110,7 +111,7 @@ select t_fails($$ select reply_to_review(1, 'thanks') $$, 'not owner, cannot rep
 -- ---------------------------------------------------------------- admin
 select t_as('00000000-0000-0000-0000-00000000000a');
 select t_assert((select count(*) from reports) = 2, 'admin sees all reports');
-select t_assert((select count(*) from listings) = 266, 'admin sees pending too');
+select t_assert((select count(*) from listings) = 267, 'admin sees pending too');
 select admin_decide_claim((select id from claims where listing_id = 2), true, 'ok');
 select admin_approve_listing((select id from listings where name = 'Smoke Test Grill'));
 select admin_update_report((select min(id) from reports), 'resolved', 'fixed phone');

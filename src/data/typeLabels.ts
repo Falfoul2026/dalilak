@@ -28,6 +28,7 @@ export const TYPE_LABELS: Record<string, Tr> = {
   'محل': { fr: 'Commerce', nl: 'Winkel', en: 'Shop' },
   'مشاوي': { fr: 'Grillades', nl: 'Grill', en: 'Grill' },
   'محاسب': { fr: 'Comptable', nl: 'Boekhouder', en: 'Accountant' },
+  'مطعم لحوم مدخنة وحلال': { fr: 'Viandes fumées halal', nl: 'Halal gerookt vlees', en: 'Halal smokehouse' },
 }
 
 export function typeLabel(label: string | null | undefined, lang: Lang): string {
