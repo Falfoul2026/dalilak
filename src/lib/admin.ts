@@ -2,6 +2,7 @@
 // check is_admin() on the server, so these calls are useless to anyone else.
 import { LISTING_COLUMNS } from './listings'
 import { AD_COLUMNS, type Ad, type AdCategory, type AdPhoto, type AdStatus } from './market'
+import { BANNER_COLUMNS, type Banner } from './banners'
 import { supabase } from './supabase'
 import type { Listing } from './types'
 
@@ -224,4 +225,65 @@ export async function adminDeleteAdPhoto(photoId: number): Promise<void> {
 export async function adminSetAdCover(photoId: number): Promise<void> {
   const { error } = await db().rpc('admin_set_ad_cover', { p_photo_id: photoId })
   if (error) throw error
+}
+
+// ---------------------------------------------------------------------------
+// Banner ads
+// ---------------------------------------------------------------------------
+export interface BannerInput {
+  title: string
+  link_url: string
+  starts_on: string
+  ends_on: string
+  is_visible: boolean
+  sort_order: string
+  advertiser_name: string
+  price_paid: string
+  notes: string
+}
+export interface BannerPrivate { advertiser_name: string | null; price_paid: string | null; notes: string | null }
+
+export async function adminAllBanners(): Promise<Banner[]> {
+  const { data, error } = await db().from('banners').select(BANNER_COLUMNS).order('created_at', { ascending: false })
+  if (error) throw error
+  return data as Banner[]
+}
+
+export async function adminGetBanner(id: number): Promise<{ banner: Banner; priv: BannerPrivate | null } | null> {
+  const [{ data: banner, error }, { data: priv }] = await Promise.all([
+    db().from('banners').select(BANNER_COLUMNS).eq('id', id).maybeSingle(),
+    db().from('banners_private').select('advertiser_name,price_paid,notes').eq('banner_id', id).maybeSingle(),
+  ])
+  if (error) throw error
+  return banner ? { banner: banner as Banner, priv: (priv as BannerPrivate | null) ?? null } : null
+}
+
+export async function adminSaveBanner(id: number | null, v: BannerInput): Promise<number> {
+  const { data, error } = await db().rpc('admin_save_banner', { p_id: id, p: v })
+  if (error) throw error
+  return data as number
+}
+
+/** Banner image: max 1200 px wide, replaces the previous file. */
+export async function adminUploadBannerImage(id: number, file: File): Promise<void> {
+  const { blob, ext } = await resizeImage(file, 1200, 0.85, false)
+  const path = `${id}/${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}.${ext}`
+  const up = await db().storage.from('banners').upload(path, blob, { contentType: blob.type, cacheControl: '31536000', upsert: false })
+  if (up.error) throw up.error
+  const { data, error } = await db().rpc('admin_set_banner_image', { p_id: id, p_path: path })
+  if (error) {
+    await db().storage.from('banners').remove([path])
+    throw error
+  }
+  if (data) await db().storage.from('banners').remove([data as string])
+}
+
+/** Running / scheduled / expired / hidden, from today's date in Brussels. */
+export function bannerState(b: Banner, today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date())):
+  'running' | 'scheduled' | 'expired' | 'hidden' | 'noimage' {
+  if (!b.is_visible) return 'hidden'
+  if (!b.image_path) return 'noimage'
+  if (b.ends_on && b.ends_on < today) return 'expired'
+  if (b.starts_on && b.starts_on > today) return 'scheduled'
+  return 'running'
 }

@@ -62,3 +62,9 @@ A new shop is live at once; its pre-rendered page for Google comes with the next
 Ads are managed in `/admin/ads` (needs migration `20261126000007_marketplace.sql`): title, section, city, price
 (empty = on request), description, up to 8 photos (first = cover), status active/sold/hidden, and private fields
 (commission, seller name/phone, notes) stored in `ads_private`, readable by the admin only.
+
+## Banner ads (`/admin/banners`)
+
+Needs migration `20261126000008_banners.sql`. A banner shows on the home page while it is visible, has an image, and
+today (Brussels) is within its start/end dates; it disappears by itself after the end date. Private fields
+(advertiser, price paid, notes) are in `banners_private`, admin-only.

@@ -19,3 +19,6 @@
 - Buy & Sell (`/market`, migration 0007): ads are created only by the admin (`/admin/ads`). Buyers contact Yousef on
   WhatsApp (never the seller). Seller details and commission live in `ads_private` (admin-only RLS) – never select
   them in public code. No payments in the app.
+- Banner ads (migration 0008): `banners` are public only while visible, with an image, and today (Brussels) is
+  between `starts_on` and `ends_on` (RLS does this). Advertiser/price/notes live in `banners_private` (admin-only).
+  Every banner is labelled "إعلان" and links use rel="sponsored".

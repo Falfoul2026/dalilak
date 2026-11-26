@@ -54,6 +54,7 @@ export default function Settings() {
         <Link to={localePath(lang, '/privacy')}>{t('settings.privacy')}</Link>
         <Link to={localePath(lang, '/terms')}>{t('settings.terms')}</Link>
         <Link to={localePath(lang, '/add')}>{t('contact.title')}</Link>
+        <Link to={localePath(lang, '/advertise')}>{t('banners.pageTitle')}</Link>
       </div>
     </section>
   )

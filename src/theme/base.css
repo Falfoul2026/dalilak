@@ -262,3 +262,22 @@ button, input, select { font: inherit; color: inherit; }
 .thumb__cover, .thumb__make-cover { position: absolute; inset-inline: 4px; bottom: 4px; font-size: 11px; font-weight: 700; border-radius: 6px; padding: 2px 4px; text-align: center; }
 .thumb__cover { background: var(--primary); color: var(--primary-contrast); }
 .thumb__make-cover { border: 0; background: rgb(255 255 255 / 0.9); color: #13201f; cursor: pointer; }
+
+/* Banner ads */
+.banners { margin-top: 16px; }
+.banners__row { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: var(--radius); }
+.banners__row::-webkit-scrollbar { display: none; }
+.banner { position: relative; display: block; scroll-snap-align: start; border-radius: var(--radius); overflow: hidden; background: var(--surface-2); color: #fff; text-decoration: none; }
+.banner img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
+.banner__ad { position: absolute; top: 8px; inset-inline-start: 8px; background: rgb(0 0 0 / 0.7); color: #fff; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+.banner__title { position: absolute; inset-inline: 0; bottom: 0; padding: 18px 12px 8px; font-weight: 700; background: linear-gradient(transparent, rgb(0 0 0 / 0.75)); }
+.banners__foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px; min-height: 20px; }
+.banners__dots { display: flex; gap: 5px; }
+.banners__dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+.banners__dots span.on { background: var(--primary); }
+.banners__cta { font-size: 13px; margin-inline-start: auto; }
+.advertise-points { margin: 0; padding-inline-start: 28px; display: grid; gap: 6px; }
+.banner-preview { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; border-radius: var(--radius-sm); }
+.upload-btn { position: relative; }
+.upload-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.admin-thumb--wide { width: 72px; height: 36px; }

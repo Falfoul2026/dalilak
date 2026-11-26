@@ -5,6 +5,7 @@ import { IconSearch } from '../components/Icons'
 import { CategoryChips, ProvinceSelect } from '../components/Filters'
 import { FeaturedCarousel } from '../components/FeaturedCarousel'
 import { SectionSwitch } from '../components/SectionSwitch'
+import { BannerStrip } from '../components/BannerStrip'
 import { ListingCard } from '../components/ListingCard'
 import { Empty, ErrorBox, Loading } from '../components/ListState'
 import { PAGE_SIZE, logSearch, searchListings } from '../lib/listings'
@@ -78,6 +79,7 @@ export function Component() {
       <CategoryChips value={filters.category} onChange={(category) => update({ category })} />
       <ProvinceSelect value={filters.province} onChange={(province) => update({ province })} />
 
+      {!filtered && <BannerStrip />}
       {!filtered && <FeaturedCarousel category={null} province={null} />}
 
       <section aria-labelledby="list-title" className="stack" style={{ marginTop: 16 }}>

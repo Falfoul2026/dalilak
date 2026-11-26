@@ -5,7 +5,7 @@ import { directionsUrl, pickLang, safeWebsite, telHref } from '../src/lib/format
 describe('sitemap', () => {
   const xml = buildSitemap('https://dalilak.be', ['baladi-bruxelles'], '2026-11-26')
   it('has every page in every language with alternates', () => {
-    expect(xml.match(/<url>/g)).toHaveLength((6 + 1) * 4)
+    expect(xml.match(/<url>/g)).toHaveLength((7 + 1) * 4)
     expect(xml).toContain('<loc>https://dalilak.be/l/baladi-bruxelles</loc>')
     expect(xml).toContain('<loc>https://dalilak.be/fr/l/baladi-bruxelles</loc>')
     expect(xml).toContain('<loc>https://dalilak.be/nl</loc>')

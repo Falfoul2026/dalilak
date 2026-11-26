@@ -4,7 +4,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const LANGS = ['ar', 'fr', 'nl', 'en'] as const
-const STATIC_PATHS = ['/', '/top', '/picks', '/market', '/market/sell', '/add']
+const STATIC_PATHS = ['/', '/top', '/picks', '/market', '/market/sell', '/add', '/advertise']
 
 const loc = (site: string, lang: string, path: string) => {
   const p = lang === 'ar' ? path : `/${lang}${path === '/' ? '' : path}`
