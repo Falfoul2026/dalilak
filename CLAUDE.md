@@ -13,3 +13,6 @@
 - Paid placement is always labelled "مميّز / Featured" (EU law).
 - Free listing shows only: name, category, address, phone, Google rating, directions.
   Premium only: website link, logo, gallery (max 8), description, offer line, verified badge, stats (decision by Yousef).
+- Current business model (decision by Yousef): no shop-owner login, no Stripe, no domain/emails for now.
+  Shops pay Yousef directly; he adds/edits shops, uploads logo/photos and toggles Featured in /admin.
+  Visitor accounts are behind `flags.userAccounts` (VITE_USER_ACCOUNTS, off).

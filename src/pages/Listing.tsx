@@ -12,6 +12,7 @@ import { RatingLine, StarRow } from '../components/Stars'
 import { directionsUrl, formatDate, formatRating, pickLang, safeWebsite, telHref } from '../lib/format'
 import { getListingBySlug, listingPhotos, listingReviews, photoUrl, track } from '../lib/listings'
 import { isSupabaseConfigured } from '../lib/supabase'
+import { flags } from '../lib/flags'
 import type { Listing, Photo, Review } from '../lib/types'
 
 /** Build time: listing data goes into the static HTML for Google. */
@@ -124,7 +125,7 @@ export function Component() {
         <a className="action" href={directionsUrl(l.name, l.address, l.city)} target="_blank" rel="noopener" onClick={() => track(l.id, 'directions')}><IconMap /><span>{t('listing.directions')}</span></a>
         {website && <a className="action" href={website} target="_blank" rel="noopener" onClick={() => track(l.id, 'website')}><IconGlobe /><span>{t('listing.website')}</span></a>}
         <button type="button" className="action" onClick={() => void share()}><IconShare /><span>{t('listing.share')}</span></button>
-        <SaveButton listingId={l.id} />
+        {flags.userAccounts && <SaveButton listingId={l.id} />}
       </div>
 
       {offer && <div className="offer"><b>{t('listing.offer')}:</b> {offer}</div>}
@@ -150,7 +151,7 @@ export function Component() {
         </section>
       )}
 
-      <section className="stack">
+      {(flags.userAccounts || (reviews?.length ?? 0) > 0) && <section className="stack">
         <h2 className="section-title">{t('listing.reviews')}</h2>
         {reviews === null ? <Loading /> : reviews.length === 0 ? <p className="muted">{t('listing.noReviews')}</p> : (
           <ul className="reviews">
@@ -163,12 +164,13 @@ export function Component() {
             ))}
           </ul>
         )}
-        <Link className="btn btn--ghost" to={`${localePath(lang, '/login')}?next=${encodeURIComponent(localePath(lang, `/l/${l.slug}`))}`}>{t('listing.writeReview')}</Link>
-      </section>
+        {flags.userAccounts && <Link className="btn btn--ghost" to={`${localePath(lang, '/login')}?next=${encodeURIComponent(localePath(lang, `/l/${l.slug}`))}`}>{t('listing.writeReview')}</Link>}
+      </section>}
 
       <div className="listing__footer">
-        <Link to={`${localePath(lang, '/report')}?listing=${l.id}`} className="muted-link"><IconFlag size={16} /> {t('listing.report')}</Link>
-        {!l.owner_id && <Link to={`${localePath(lang, '/claim')}?listing=${l.id}`} className="muted-link">{t('listing.claim')}</Link>}
+        {/* Until visitor accounts exist, reports and claims go to the contact page. */}
+        <Link to={flags.userAccounts ? `${localePath(lang, '/report')}?listing=${l.id}` : localePath(lang, '/add')} className="muted-link"><IconFlag size={16} /> {t('listing.report')}</Link>
+        {!l.owner_id && <Link to={flags.userAccounts ? `${localePath(lang, '/claim')}?listing=${l.id}` : localePath(lang, '/add')} className="muted-link">{t('listing.claim')}</Link>}
         {l.source === 'google_maps' && <p className="muted source-note">{t('labels.sourceNote')}</p>}
       </div>
 

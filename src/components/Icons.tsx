@@ -13,3 +13,4 @@ export const IconMap = ({ size }: P) => <svg {...s(size)}><path d="M12 21s-7-6.2
 export const IconGlobe = ({ size }: P) => <svg {...s(size)}><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
 export const IconShare = ({ size }: P) => <svg {...s(size)}><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4" /></svg>
 export const IconFlag = ({ size }: P) => <svg {...s(size)}><path d="M4 22V4M4 4h12l-2 4 2 4H4" /></svg>
+export const IconPlus = ({ size }: P) => <svg {...s(size)}><circle cx="12" cy="12" r="9" /><path d="M12 8v8M8 12h8" /></svg>

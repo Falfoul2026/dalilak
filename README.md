@@ -49,3 +49,10 @@ Rules that matter:
 - `dist/404.html` is an empty app shell: pages without a static file still work in the browser.
 
 In this cloud container Node's `fetch` needs `NODE_USE_ENV_PROXY=1 npm run build` (proxy); Cloudflare does not.
+
+## Admin panel (`/admin`)
+
+Log in with the admin account (email + password created in Supabase → Authentication → Users, then
+`select public.bootstrap_admin('email')`). From there: add/edit shops, upload logo (1) and photos (max 8, resized in
+the browser), Featured on/off with optional end date, hide/show. Needs migration `20261126000006_admin_tools.sql`.
+A new shop is live at once; its pre-rendered page for Google comes with the next Netlify deploy.

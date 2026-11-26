@@ -8,6 +8,9 @@
   # Public address of the site: canonical links, hreflang, sitemap. Not a secret.
   # Supabase URL and publishable key stay in the Netlify UI.
   VITE_SITE_URL = "https://dalilak-mmn4.netlify.app"
+  # Shown on the public "Add your shop" page. WhatsApp in international format without + (e.g. 32472000000).
+  VITE_CONTACT_WHATSAPP = ""
+  VITE_CONTACT_EMAIL = ""
 
 # Pages without a pre-rendered file (e.g. a business approved after the last build)
 # get dist/404.html, an app shell that loads the page from Supabase in the browser.

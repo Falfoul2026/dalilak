@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import { useLang, useT } from '../i18n'
 import { localePath } from '../i18n/langs'
-import { IconBookmark, IconHeart, IconHome, IconSettings, IconStar } from './Icons'
+import { IconBookmark, IconHeart, IconHome, IconPlus, IconSettings, IconStar } from './Icons'
+import { flags } from '../lib/flags'
 
 export function BottomNav() {
   const t = useT()
@@ -10,7 +11,9 @@ export function BottomNav() {
     { to: '/', label: t('nav.home'), icon: <IconHome />, end: true },
     { to: '/top', label: t('nav.top'), icon: <IconStar /> },
     { to: '/picks', label: t('nav.picks'), icon: <IconHeart /> },
-    { to: '/saved', label: t('nav.saved'), icon: <IconBookmark /> },
+    flags.userAccounts
+      ? { to: '/saved', label: t('nav.saved'), icon: <IconBookmark /> }
+      : { to: '/add', label: t('nav.add'), icon: <IconPlus /> },
     { to: '/settings', label: t('nav.settings'), icon: <IconSettings /> },
   ]
   return (

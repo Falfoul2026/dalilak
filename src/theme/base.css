@@ -172,3 +172,51 @@ button, input, select { font: inherit; color: inherit; }
   position: fixed; inset-inline: 16px; bottom: calc(var(--nav-h) + 16px + env(safe-area-inset-bottom)); z-index: 20; margin-inline: auto; max-width: 360px;
   background: var(--text); color: var(--bg); padding: 10px 14px; border-radius: var(--radius-sm); text-align: center;
 }
+
+/* Forms */
+.input, .form input:not([type='checkbox']):not([type='file']), .form select, .form textarea, .featured-box input[type='date'] {
+  width: 100%; min-height: 44px; padding: 8px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+}
+.form textarea { resize: vertical; }
+.form { display: grid; gap: 12px; }
+.form label, .featured-box label { display: grid; gap: 4px; font-size: 14px; color: var(--text-muted); }
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 380px) { .form__row { grid-template-columns: 1fr; } }
+.form fieldset { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; display: grid; gap: 8px; margin: 0; }
+.form legend { font-weight: 700; color: var(--text); padding-inline: 4px; }
+.form .check, .check { display: flex !important; align-items: center; gap: 8px; color: var(--text) !important; font-size: 15px !important; }
+.check input { width: 20px; height: 20px; accent-color: var(--primary); }
+.checks { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.form__msg { margin: 0; font-weight: 700; }
+.form__error { margin: 0; color: #b42318; }
+
+/* Admin list */
+.admin-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.admin-row { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; }
+.admin-row__main { flex: 1; min-width: 0; display: grid; gap: 2px; color: var(--text); text-decoration: none; }
+.admin-row__main b { overflow-wrap: anywhere; }
+.admin-row__main .muted { font-size: 13px; }
+.admin-row__tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.admin-sub { font-size: 15px; margin: 6px 0 0; }
+
+/* On/off switch */
+.switch { position: relative; flex: none; width: 52px; height: 30px; cursor: pointer; }
+.switch input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.switch__ui { position: absolute; inset: 0; border-radius: 999px; background: var(--border); transition: background 0.15s; pointer-events: none; }
+.switch__ui::after { content: ''; position: absolute; top: 3px; inset-inline-start: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; transition: transform 0.15s; box-shadow: 0 1px 2px rgb(0 0 0 / 0.3); }
+.switch input:checked + .visually-hidden + .switch__ui { background: var(--accent); }
+.switch input:checked + .visually-hidden + .switch__ui::after { transform: translateX(22px); }
+[dir='rtl'] .switch input:checked + .visually-hidden + .switch__ui::after { transform: translateX(-22px); }
+.switch input:focus-visible + .visually-hidden + .switch__ui { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.featured-box--on { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+
+/* Photos */
+.admin-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+.thumb { position: relative; margin: 0; aspect-ratio: 1; border-radius: var(--radius-sm); overflow: hidden; background: var(--surface-2); border: 1px solid var(--border); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb__del { position: absolute; top: 4px; inset-inline-end: 4px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgb(0 0 0 / 0.65); color: #fff; cursor: pointer; }
+.upload { aspect-ratio: 1; display: grid; place-items: center; text-align: center; padding: 6px; border: 2px dashed var(--border); border-radius: var(--radius-sm); color: var(--primary); font-weight: 700; font-size: 13px; cursor: pointer; position: relative; }
+.upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.upload--busy { opacity: 0.5; pointer-events: none; }

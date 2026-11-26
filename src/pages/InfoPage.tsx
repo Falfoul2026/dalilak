@@ -1,4 +1,5 @@
 import { useT } from '../i18n'
+import { contact } from '../lib/flags'
 
 /** Pages that arrive in the next steps. */
 function SoonPage({ title }: { title: string }) {
@@ -11,8 +12,19 @@ function SoonPage({ title }: { title: string }) {
   )
 }
 
-export const Privacy = () => <SoonPage title={useT()('settings.privacy')} />
-export const Terms = () => <SoonPage title={useT()('settings.terms')} />
+function LegalPage({ which }: { which: 'privacy' | 'terms' }) {
+  const t = useT()
+  return (
+    <section>
+      <h1 className="page-title">{t(`settings.${which}`)}</h1>
+      <div className="card"><p style={{ margin: 0 }}>{t(`legal.${which}Body`)}</p></div>
+      {contact.email && <p className="muted"><a href={`mailto:${contact.email}`} dir="ltr">{contact.email}</a></p>}
+    </section>
+  )
+}
+
+export const Privacy = () => <LegalPage which="privacy" />
+export const Terms = () => <LegalPage which="terms" />
 export const Report = () => <SoonPage title={useT()('soonPage.report')} />
 export const Claim = () => <SoonPage title={useT()('soonPage.claim')} />
 

@@ -30,3 +30,15 @@ export function pickLang(map: Record<string, string> | null | undefined, lang: L
   if (!map) return ''
   return map[lang] || map.ar || Object.values(map)[0] || ''
 }
+
+/** Same idea as normalize_text() in SQL: lowercase, no accents, Arabic letter variants unified. */
+export function normalizeForSearch(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[أإآٱ]/g, 'ا') // before NFD, which would split أ into ا + hamza
+    .replace(/ى/g, 'ي')
+    .replace(/ة/g, 'ه')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f\u064B-\u0655\u0640]/g, '')
+    .trim()
+}

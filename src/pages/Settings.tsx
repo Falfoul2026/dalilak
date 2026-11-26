@@ -53,7 +53,7 @@ export default function Settings() {
       <div className="card stack">
         <Link to={localePath(lang, '/privacy')}>{t('settings.privacy')}</Link>
         <Link to={localePath(lang, '/terms')}>{t('settings.terms')}</Link>
-        <span className="muted">{t('settings.deleteAccount')} – {t('common.soon')}</span>
+        <Link to={localePath(lang, '/add')}>{t('contact.title')}</Link>
       </div>
     </section>
   )
