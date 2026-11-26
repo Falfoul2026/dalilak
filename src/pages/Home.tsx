@@ -11,11 +11,13 @@ import { isSupabaseConfigured } from '../lib/supabase'
 import { useDebounced, useFilters } from '../lib/useFilters'
 import type { Listing } from '../lib/types'
 
-/** Build time: the first page of the plain list goes into the static HTML (crawlable links). */
+/** Build time: the first page of the list goes into the static HTML (crawlable links).
+ *  Same order as search_listings with boost: subscribed (premium) first, then Google rating. */
 export async function loader() {
   if (!import.meta.env.SSR) return null
   const { allActiveListings } = await import('../lib/ssrData')
-  return { items: (await allActiveListings()).slice(0, PAGE_SIZE) }
+  const all = await allActiveListings()
+  return { items: [...all.filter((l) => l.premium_active), ...all.filter((l) => !l.premium_active)].slice(0, PAGE_SIZE) }
 }
 
 type Status = 'idle' | 'loading' | 'error'
@@ -75,8 +77,8 @@ export function Component() {
         {status === 'idle' && items.length === 0 && <Empty text={t('list.empty')} />}
         <ul className="listing-list" aria-busy={status === 'loading'}>
           {items.map((l) => (
-            // In filtered results premium listings are boosted, so they carry the paid label.
-            <li key={l.id}><ListingCard l={l} featured={filtered && l.premium_active} /></li>
+            // Premium listings are placed first because they pay, so they always carry the paid label.
+            <li key={l.id}><ListingCard l={l} featured={l.premium_active} /></li>
           ))}
         </ul>
         {more && items.length > 0 && (

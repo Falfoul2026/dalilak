@@ -1,0 +1,23 @@
+# Netlify build settings (override the same settings in the Netlify UI).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Public address of the site: canonical links, hreflang, sitemap. Not a secret.
+  # Supabase URL and publishable key stay in the Netlify UI.
+  VITE_SITE_URL = "https://dalilak-mmn4.netlify.app"
+
+# Pages without a pre-rendered file (e.g. a business approved after the last build)
+# get dist/404.html, an app shell that loads the page from Supabase in the browser.
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"

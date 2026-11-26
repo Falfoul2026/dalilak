@@ -15,16 +15,15 @@ function db() {
   return supabase
 }
 
-const hasFilters = (f: Filters) => Boolean(f.q.trim() || f.category || f.province)
-
-/** Home list / search. Premium is boosted (and labelled) only when the user filters or searches. */
+/** Home list / search: subscribed (premium) listings first – the UI labels them "مميّز" – then Google rating.
+ *  Not used by "الأعلى تقييماً", which ranks by real ratings only (top_rated). */
 export async function searchListings(f: Filters, offset = 0, limit = PAGE_SIZE): Promise<Listing[]> {
   const { data, error } = await db()
     .rpc('search_listings', {
       q: f.q.trim() || null,
       p_category: f.category,
       p_province: f.province,
-      p_boost: hasFilters(f),
+      p_boost: true,
       p_limit: limit,
       p_offset: offset,
     })
