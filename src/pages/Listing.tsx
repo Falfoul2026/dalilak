@@ -12,7 +12,7 @@ import { RatingLine, StarRow } from '../components/Stars'
 import { directionsUrl, formatDate, formatRating, pickLang, safeWebsite, telHref } from '../lib/format'
 import { getListingBySlug, listingPhotos, listingReviews, photoUrl, track } from '../lib/listings'
 import { isSupabaseConfigured } from '../lib/supabase'
-import { flags } from '../lib/flags'
+import { WHATSAPP_MESSAGES, flags, whatsappLink } from '../lib/flags'
 import type { Listing, Photo, Review } from '../lib/types'
 
 /** Build time: listing data goes into the static HTML for Google. */
@@ -78,6 +78,7 @@ export function Component() {
   const website = premium ? safeWebsite(l.website) : null           // website link is premium only
   const description = premium ? pickLang(l.description, lang) : ''
   const offer = premium ? pickLang(l.offer_text, lang) : ''
+  const reportLink = whatsappLink(WHATSAPP_MESSAGES.report)
   const gallery = photos.filter((p) => p.kind === 'gallery')
   const siteUrl = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '')
   const pageUrl = siteUrl ? `${siteUrl}${localePath(lang, `/l/${l.slug}`)}` : undefined
@@ -169,7 +170,9 @@ export function Component() {
 
       <div className="listing__footer">
         {/* Until visitor accounts exist, reports and claims go to the contact page. */}
-        <Link to={flags.userAccounts ? `${localePath(lang, '/report')}?listing=${l.id}` : localePath(lang, '/add')} className="muted-link"><IconFlag size={16} /> {t('listing.report')}</Link>
+        {flags.userAccounts || !reportLink
+          ? <Link to={flags.userAccounts ? `${localePath(lang, '/report')}?listing=${l.id}` : localePath(lang, '/add')} className="muted-link"><IconFlag size={16} /> {t('listing.report')}</Link>
+          : <a href={reportLink} target="_blank" rel="noopener" className="muted-link"><IconFlag size={16} /> {t('contact.reportViaWhatsapp')}</a>}
         {!l.owner_id && <Link to={flags.userAccounts ? `${localePath(lang, '/claim')}?listing=${l.id}` : localePath(lang, '/add')} className="muted-link">{t('listing.claim')}</Link>}
         {l.source === 'google_maps' && <p className="muted source-note">{t('labels.sourceNote')}</p>}
       </div>

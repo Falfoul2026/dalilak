@@ -220,3 +220,5 @@ button, input, select { font: inherit; color: inherit; }
 .upload { aspect-ratio: 1; display: grid; place-items: center; text-align: center; padding: 6px; border: 2px dashed var(--border); border-radius: var(--radius-sm); color: var(--primary); font-weight: 700; font-size: 13px; cursor: pointer; position: relative; }
 .upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 .upload--busy { opacity: 0.5; pointer-events: none; }
+
+.btn--whatsapp { background: #1f8f4e; color: #fff; }

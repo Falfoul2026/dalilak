@@ -211,7 +211,9 @@
     "intro": "Heb je een zaak of dienst voor de Arabische gemeenschap in België? Neem contact op om ze gratis toe te voegen, of om ze ‘gesponsord’ te maken met logo, foto’s en een plaats in ‘Onze favorieten’.",
     "whatsapp": "WhatsApp",
     "email": "E-mail",
-    "fix": "Foute info of een gesloten zaak gezien? Laat het ons weten."
+    "fix": "Foute info of een gesloten zaak gezien? Laat het ons weten.",
+    "addViaWhatsapp": "Zaak toevoegen via WhatsApp",
+    "reportViaWhatsapp": "Foute info of gesloten zaak melden"
   },
   "legal": {
     "privacyBody": "Dalilak vraagt geen account en gebruikt geen trackingcookies. We tellen alleen anoniem paginabezoeken, klikken op bellen en route, en zoekopdrachten, zonder gegevens over jou. De gegevens staan bij Supabase (EU) en de site bij Netlify. De info over zaken komt van Google Maps of van de zaken zelf. Om info van een zaak te verbeteren of te verwijderen, neem contact op.",

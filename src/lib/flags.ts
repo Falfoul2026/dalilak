@@ -14,3 +14,14 @@ export const contact = {
   whatsapp: str(import.meta.env.VITE_CONTACT_WHATSAPP).replace(/[^\d]/g, ''), // international format, e.g. 32472000000
   email: str(import.meta.env.VITE_CONTACT_EMAIL),
 }
+
+/** Pre-filled WhatsApp messages (always Arabic: they are read by Yousef). */
+export const WHATSAPP_MESSAGES = {
+  addShop: 'مرحبا، عندي محل/خدمة وبدي أضيفه على دليلك',
+  report: 'مرحبا، لاحظت معلومات خاطئة أو محل مسكّر على دليلك',
+} as const
+
+/** wa.me link with a pre-filled message, or null when no number is configured. */
+export function whatsappLink(message: string): string | null {
+  return contact.whatsapp ? `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message)}` : null
+}

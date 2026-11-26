@@ -9,7 +9,7 @@
   # Supabase URL and publishable key stay in the Netlify UI.
   VITE_SITE_URL = "https://dalilak-mmn4.netlify.app"
   # Shown on the public "Add your shop" page. WhatsApp in international format without + (e.g. 32472000000).
-  VITE_CONTACT_WHATSAPP = ""
+  VITE_CONTACT_WHATSAPP = "32476177619"
   VITE_CONTACT_EMAIL = ""
 
 # Pages without a pre-rendered file (e.g. a business approved after the last build)

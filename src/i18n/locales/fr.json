@@ -211,7 +211,9 @@
     "intro": "Vous avez un commerce ou un service pour la communauté arabe en Belgique ? Contactez-nous pour l’ajouter gratuitement, ou pour le rendre « sponsorisé » avec logo, photos et place dans « Nos coups de cœur ».",
     "whatsapp": "WhatsApp",
     "email": "E-mail",
-    "fix": "Une info erronée ou un commerce fermé ? Écrivez-nous et nous corrigeons."
+    "fix": "Une info erronée ou un commerce fermé ? Écrivez-nous et nous corrigeons.",
+    "addViaWhatsapp": "Ajouter mon commerce via WhatsApp",
+    "reportViaWhatsapp": "Signaler une info erronée ou un commerce fermé"
   },
   "legal": {
     "privacyBody": "Dalilak ne demande pas de compte et n’utilise pas de cookies de suivi. Nous comptons seulement de façon anonyme les visites des pages, les clics sur appeler et itinéraire, et les recherches, sans aucune donnée sur vous. Les données sont hébergées chez Supabase (UE) et le site chez Netlify. Les infos des commerces viennent de Google Maps ou des commerçants. Pour corriger ou supprimer les infos d’un commerce, contactez-nous.",

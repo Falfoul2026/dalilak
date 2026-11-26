@@ -211,7 +211,9 @@
     "intro": "Do you run a shop or service for the Arab community in Belgium? Contact us to list it for free, or to make it “Featured” with a logo, photos and a place in “Our favourites”.",
     "whatsapp": "WhatsApp",
     "email": "Email",
-    "fix": "Spotted wrong info or a closed shop? Tell us and we will fix it."
+    "fix": "Spotted wrong info or a closed shop? Tell us and we will fix it.",
+    "addViaWhatsapp": "Add my shop via WhatsApp",
+    "reportViaWhatsapp": "Report wrong info or a closed shop"
   },
   "legal": {
     "privacyBody": "Dalilak asks for no account and uses no tracking cookies. We only count, anonymously, page visits, taps on call and directions, and searches, without any data about you. Data is stored with Supabase (EU) and the site is hosted by Netlify. Shop details come from Google Maps or from the shops themselves. To correct or remove a shop’s details, contact us.",
