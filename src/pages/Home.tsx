@@ -9,18 +9,19 @@ import { Empty, ErrorBox, Loading } from '../components/ListState'
 import { PAGE_SIZE, logSearch, searchListings } from '../lib/listings'
 import { isSupabaseConfigured } from '../lib/supabase'
 import { useDebounced, useFilters } from '../lib/useFilters'
-import type { Listing } from '../lib/types'
+import type { Filters, Listing } from '../lib/types'
 
-/** Build time: the first page of the list goes into the static HTML (crawlable links).
- *  Same order as search_listings with boost: subscribed (premium) first, then Google rating. */
+/** Build time: the first page of "All shops" goes into the static HTML (crawlable links).
+ *  Premium listings are not in it: they are in the "خياراتنا المفضلة" strip above. */
 export async function loader() {
   if (!import.meta.env.SSR) return null
   const { allActiveListings } = await import('../lib/ssrData')
-  const all = await allActiveListings()
-  return { items: [...all.filter((l) => l.premium_active), ...all.filter((l) => !l.premium_active)].slice(0, PAGE_SIZE) }
+  return { items: (await allActiveListings()).filter((l) => !l.premium_active).slice(0, PAGE_SIZE) }
 }
 
 type Status = 'idle' | 'loading' | 'error'
+
+const isDefaultFilters = (f: Filters) => !f.q.trim() && !f.category && !f.province
 
 export function Component() {
   const t = useT()
@@ -32,6 +33,8 @@ export function Component() {
   const [status, setStatus] = useState<Status>(pre ? 'idle' : 'loading')
   const [more, setMore] = useState((pre?.items.length ?? 0) >= PAGE_SIZE)
   const req = useRef(0)
+  /** rows received from the server so far (the next page starts here, even if some were hidden) */
+  const fetched = useRef(0)
 
   useEffect(() => { if (ready) setQInput(filters.q) }, [ready]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (ready && q !== filters.q) update({ q }) }, [q]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -43,7 +46,12 @@ export function Component() {
     try {
       const rows = await searchListings(filters, offset)
       if (id !== req.current) return
-      setItems((prev) => (offset === 0 ? rows : [...prev, ...rows]))
+      fetched.current = offset + rows.length
+      // Without search/filters the premium listings are shown in the strip above, so they are
+      // left out here (no listing twice). With search/filters the strip is hidden and premium
+      // listings stay first in the results, labelled "مميّز".
+      const shown = isDefaultFilters(filters) ? rows.filter((l) => !l.premium_active) : rows
+      setItems((prev) => (offset === 0 ? shown : [...prev, ...shown]))
       setMore(rows.length === PAGE_SIZE)
       setStatus('idle')
       if (offset === 0) logSearch(filters, rows.length)
@@ -77,12 +85,12 @@ export function Component() {
         {status === 'idle' && items.length === 0 && <Empty text={t('list.empty')} />}
         <ul className="listing-list" aria-busy={status === 'loading'}>
           {items.map((l) => (
-            // Premium listings are placed first because they pay, so they always carry the paid label.
+            // Premium listings are placed first because they pay (filtered results), so they carry the paid label.
             <li key={l.id}><ListingCard l={l} featured={l.premium_active} /></li>
           ))}
         </ul>
         {more && items.length > 0 && (
-          <button type="button" className="btn btn--block" disabled={status === 'loading'} onClick={() => void load(items.length)}>
+          <button type="button" className="btn btn--block" disabled={status === 'loading'} onClick={() => void load(fetched.current)}>
             {status === 'loading' ? t('list.loading') : t('list.loadMore')}
           </button>
         )}
