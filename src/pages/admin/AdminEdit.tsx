@@ -4,6 +4,7 @@ import { useLang, useT } from '../../i18n'
 import { backArrow } from '../../lib/format'
 import { LANGS, LANG_NAMES, localePath } from '../../i18n/langs'
 import { AdminGate } from '../../components/AdminGate'
+import { SubscriptionBox } from '../../components/SubscriptionBox'
 import { Loading } from '../../components/ListState'
 import { CATEGORIES } from '../../data/categories'
 import { LAUNCH_PROVINCE_SLUGS, OTHER_PROVINCE_SLUGS } from '../../data/provinces'
@@ -81,6 +82,7 @@ function AdminEdit() {
       )}
 
       {listing && <FeaturedBox listing={listing} onChange={setListing} />}
+      {listing && <SubscriptionBox listingId={listing.id} onChange={() => void adminGetListing(listing.id).then(setListing)} />}
 
       <form className="card form" onSubmit={(e) => void save(e)}>
         <label>{t('admin.name')}<input required minLength={2} maxLength={200} dir="auto" value={form.name} onChange={(e) => set('name', e.target.value)} /></label>

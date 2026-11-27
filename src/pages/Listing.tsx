@@ -132,7 +132,7 @@ export function Component() {
       {offer && <div className="offer"><b>{t('listing.offer')}:</b> {offer}</div>}
 
       <dl className="card details">
-        {l.address && <><dt>{t('listing.address')}</dt><dd dir="auto">{l.address}</dd></>}
+        {l.address && <><dt>{t('listing.address')}</dt><dd dir="auto"><a href={directionsUrl(l.name, l.address, l.city)} target="_blank" rel="noopener" onClick={() => track(l.id, 'directions')}>{l.address}</a></dd></>}
         {l.phone && <><dt>{t('listing.phone')}</dt><dd><a href={telHref(l.phone)} dir="ltr" onClick={() => track(l.id, 'call')}>{l.phone}</a></dd></>}
         {!(premium && l.rating_google == null) && <><dt>{t('listing.googleRating')}</dt>
         <dd><RatingLine rating={l.rating_google} count={l.reviews_google} /></dd></>}

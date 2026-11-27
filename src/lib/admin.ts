@@ -287,3 +287,94 @@ export function bannerState(b: Banner, today = new Intl.DateTimeFormat('en-CA', 
   if (b.starts_on && b.starts_on > today) return 'scheduled'
   return 'running'
 }
+
+// ---------------------------------------------------------------------------
+// Subscriptions (Featured places): owner email, dates, renewals, stats, reminders
+// ---------------------------------------------------------------------------
+export type EmailLang = 'ar' | 'fr' | 'nl' | 'en'
+export interface Billing {
+  listing_id: number
+  owner_email: string | null
+  email_lang: EmailLang
+  starts_on: string
+  period_start: string
+  ends_on: string
+}
+export interface SubscriptionInput { owner_email: string; email_lang: EmailLang; starts_on: string; ends_on: string }
+export interface PlaceStats { views: number; calls: number; directions: number }
+export interface SubLogRow { id: number; action: 'start' | 'update' | 'renew' | 'expire'; old_ends_on: string | null; new_ends_on: string | null; created_at: string }
+export interface ReminderLogRow {
+  id: number; kind: 'reminder' | 'test'; period_end: string | null; to_email: string | null
+  status: 'sending' | 'sent' | 'error'; error: string | null; created_at: string; sent_at: string | null
+  listing_id: number | null; listing: { name: string } | null
+}
+export interface BillingOverviewRow extends Billing { listing: { id: number; name: string; slug: string; status: string } | null }
+
+/** Today in Brussels, YYYY-MM-DD (same day boundary as the database). */
+export const todayBrussels = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date())
+export const daysBetween = (from: string, to: string) => Math.round((Date.parse(`${to}T12:00:00Z`) - Date.parse(`${from}T12:00:00Z`)) / 86400000)
+
+export async function adminGetBilling(listingId: number): Promise<Billing | null> {
+  const { data, error } = await db().from('listing_billing').select('*').eq('listing_id', listingId).maybeSingle()
+  if (error) throw error
+  return data as Billing | null
+}
+
+export async function adminSaveSubscription(listingId: number, v: SubscriptionInput): Promise<void> {
+  const { error } = await db().rpc('admin_save_subscription', { p_listing_id: listingId, p: v })
+  if (error) throw error
+}
+
+/** "Renew +1 month". Returns the new end date. */
+export async function adminRenewMonth(listingId: number): Promise<string> {
+  const { data, error } = await db().rpc('admin_renew_month', { p_listing_id: listingId })
+  if (error) throw error
+  return data as string
+}
+
+export async function adminPlaceStats(listingId: number, from: string, to: string): Promise<PlaceStats> {
+  const { data, error } = await db().rpc('place_stats', { p_listing_id: listingId, p_from: from, p_to: to })
+  if (error) throw error
+  const r = (Array.isArray(data) ? data[0] : data) ?? {}
+  return { views: Number(r.views ?? 0), calls: Number(r.calls ?? 0), directions: Number(r.directions ?? 0) }
+}
+
+export async function adminSubscriptionLog(listingId: number): Promise<SubLogRow[]> {
+  const { data, error } = await db().from('subscription_log').select('id,action,old_ends_on,new_ends_on,created_at')
+    .eq('listing_id', listingId).order('created_at', { ascending: false }).limit(20)
+  if (error) throw error
+  return data as SubLogRow[]
+}
+
+export async function adminReminderLog(limit = 50, listingId?: number): Promise<ReminderLogRow[]> {
+  let q = db().from('reminder_log').select('id,kind,period_end,to_email,status,error,created_at,sent_at,listing_id,listing:listings(name)')
+    .order('created_at', { ascending: false }).limit(limit)
+  if (listingId) q = q.eq('listing_id', listingId)
+  const { data, error } = await q
+  if (error) throw error
+  return data as unknown as ReminderLogRow[]
+}
+
+export async function adminBillingOverview(): Promise<BillingOverviewRow[]> {
+  const { data, error } = await db().from('listing_billing').select('*, listing:listings(id,name,slug,status)').order('ends_on')
+  if (error) throw error
+  return data as unknown as BillingOverviewRow[]
+}
+
+/** Admin button: the real reminder for this place, marked [TEST], sent to Yousef's own address (Netlify function). */
+export async function adminSendTestReminder(listingId: number): Promise<{ to: string }> {
+  const { data: s } = await db().auth.getSession()
+  const token = s.session?.access_token
+  if (!token) throw new Error('login_required')
+  // In the Android app the page is not on the website: call the public address.
+  const native = typeof window !== 'undefined' && Boolean((window as unknown as { Capacitor?: { isNativePlatform?: () => boolean } }).Capacitor?.isNativePlatform?.())
+  const base = native ? ((import.meta.env.VITE_SITE_URL as string | undefined) ?? '').replace(/\/$/, '') : ''
+  const res = await fetch(`${base}/.netlify/functions/send-test-reminder`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ listingId }),
+  })
+  const body = (await res.json().catch(() => ({}))) as { to?: string; error?: string; missing?: string[]; detail?: string }
+  if (!res.ok) throw new Error([body.error ?? `HTTP ${res.status}`, body.missing?.join(', '), body.detail].filter(Boolean).join(': '))
+  return { to: body.to ?? '' }
+}

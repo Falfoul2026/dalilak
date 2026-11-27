@@ -28,6 +28,7 @@ export const routes: RouteRecord[] = LANGS.map((lang) => ({
     { path: 'admin', lazy: () => import('./pages/admin/AdminList') },
     { path: 'admin/new', lazy: () => import('./pages/admin/AdminEdit') },
     { path: 'admin/l/:id', lazy: () => import('./pages/admin/AdminEdit') },
+    { path: 'admin/subs', lazy: () => import('./pages/admin/AdminSubs') },
     { path: 'admin/banners', lazy: () => import('./pages/admin/AdminBanners') },
     { path: 'admin/banners/new', lazy: () => import('./pages/admin/AdminBannerEdit') },
     { path: 'admin/banners/:id', lazy: () => import('./pages/admin/AdminBannerEdit') },

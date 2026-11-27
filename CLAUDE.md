@@ -24,3 +24,6 @@
   Every banner is labelled "إعلان" and links use rel="sponsored".
 - Android: never commit the upload key or its passwords (kept outside the repo, `DALILAK_SIGNING`). Raise
   `versionCode` for every Play upload. The app build (`CAP_BUILD=1`) must not register a service worker.
+- Subscriptions (migration 0010): billing/logs are admin-only; reminders go through `claim_reminder` (never twice).
+  Secrets for the Netlify functions (`SUPABASE_SERVICE_ROLE_KEY`, `GMAIL_APP_PASSWORD`, `REMINDER_REPLY_TO`) live only
+  in the Netlify UI. Statistics must never block or break a page (`track()` swallows errors).

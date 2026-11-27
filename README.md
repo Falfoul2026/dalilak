@@ -82,3 +82,16 @@ today (Brussels) is within its start/end dates; it disappears by itself after th
 - Icons/splash: `node scripts/make-app-assets.cjs && npx capacitor-assets generate --android ...` (sources in `assets/`);
   Play Store graphics in `store/`.
 - Privacy policy URL for Play: https://dalilak-mmn4.netlify.app/privacy
+
+## Subscriptions, stats and renewal reminders
+
+- Stats: `listing_events` (counts only: view once per tab session, phone taps, address/directions taps).
+- Admin: each place has a **Subscription** box (owner email, email language, start/end dates, Renew +1 month,
+  stats for the current period, "Send me a test reminder", logs). Dashboard tab **الاشتراكات**: ending within
+  7 days, expired, reminder log. Migration `20261127000010_subscriptions.sql`.
+- `netlify/functions/subscription-reminders.mts` runs daily at 07:00 UTC: turns off Featured after the end date
+  and emails each owner once per period when the end is 7 days away (or closer, if a day was missed). Each reminder is
+  reserved in `reminder_log` before sending, so it is never sent twice.
+- `netlify/functions/send-test-reminder.mts`: admin-only, sends the real reminder (marked [TEST]) to REMINDER_REPLY_TO.
+- Netlify environment variables (UI only, never in the repo): `SUPABASE_SERVICE_ROLE_KEY`, `GMAIL_APP_PASSWORD`
+  (Gmail app password of daliladapp@gmail.com), `REMINDER_REPLY_TO` (Yousef's address). Optional: `RENEW_PRICE_EUR` (20).

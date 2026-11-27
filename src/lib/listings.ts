@@ -87,9 +87,20 @@ export function photoUrl(path: string): string {
 
 export type EventKind = 'view' | 'call' | 'directions' | 'website' | 'share'
 
-/** Anonymous counter; never blocks the UI. */
+/** Anonymous counter (counts only, nothing about the visitor); never blocks or breaks the page.
+ *  A page view is counted once per listing per browser tab session, so reloads do not inflate the stats. */
 export function track(listingId: number, kind: EventKind) {
-  supabase?.rpc('track_event', { p_listing_id: listingId, p_kind: kind }).then(() => undefined, () => undefined)
+  if (!supabase) return
+  if (kind === 'view') {
+    try {
+      const key = `dalilak.viewed.${listingId}`
+      if (sessionStorage.getItem(key)) return
+      sessionStorage.setItem(key, '1')
+    } catch { /* storage blocked: count anyway */ }
+  }
+  try {
+    supabase.rpc('track_event', { p_listing_id: listingId, p_kind: kind }).then(() => undefined, () => undefined)
+  } catch { /* never let statistics break the page */ }
 }
 
 export function logSearch(f: Filters, results: number) {

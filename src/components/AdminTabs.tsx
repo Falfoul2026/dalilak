@@ -3,7 +3,7 @@ import { useLang, useT } from '../i18n'
 import { localePath } from '../i18n/langs'
 import { supabase } from '../lib/supabase'
 
-export function AdminTabs({ active }: { active: 'shops' | 'ads' | 'banners' }) {
+export function AdminTabs({ active }: { active: 'shops' | 'subs' | 'ads' | 'banners' }) {
   const t = useT()
   const lang = useLang()
   return (
@@ -14,6 +14,7 @@ export function AdminTabs({ active }: { active: 'shops' | 'ads' | 'banners' }) {
       </div>
       <div className="segmented">
         <Link to={localePath(lang, '/admin')} aria-current={active === 'shops' ? 'true' : undefined}>{t('admin.tabShops')}</Link>
+        <Link to={localePath(lang, '/admin/subs')} aria-current={active === 'subs' ? 'true' : undefined}>{t('admin.tabSubs')}</Link>
         <Link to={localePath(lang, '/admin/ads')} aria-current={active === 'ads' ? 'true' : undefined}>{t('admin.tabAds')}</Link>
         <Link to={localePath(lang, '/admin/banners')} aria-current={active === 'banners' ? 'true' : undefined}>{t('admin.tabBanners')}</Link>
       </div>
