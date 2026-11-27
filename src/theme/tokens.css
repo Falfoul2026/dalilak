@@ -25,6 +25,9 @@
   --radius-sm: 10px;
   --gutter: 16px;
   --nav-h: 64px;
+  /* Phone notch / status bar / gesture bar. env() on the web and in PWAs; --safe-area-inset-* is injected by Capacitor's SystemBars in the Android app. */
+  --safe-top: max(env(safe-area-inset-top, 0px), var(--safe-area-inset-top, 0px));
+  --safe-bottom: max(env(safe-area-inset-bottom, 0px), var(--safe-area-inset-bottom, 0px));
   --app-w: 480px; /* the app column on wide screens */
   --frame-bg: #dde6e4;
   --font: 'Cairo', 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif;

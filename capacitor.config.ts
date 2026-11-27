@@ -10,6 +10,8 @@ const config: CapacitorConfig = {
     backgroundColor: '#0b5d5b',
   },
   plugins: {
+    // Android 15+ draws the app under the status bar: the page adds the safe-area padding itself (--safe-area-inset-*).
+    SystemBars: { insetsHandling: 'css' },
     SplashScreen: {
       launchShowDuration: 1200,
       launchAutoHide: true,
