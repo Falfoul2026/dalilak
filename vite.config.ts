@@ -33,9 +33,11 @@ export default defineConfig(({ mode }) => ({
         ],
       },
       workbox: {
-        // Precache only the app shell; the ~1000 listing pages are cached when visited.
-        globPatterns: ['**/*.{js,css,svg,png}', 'assets/*{arabic,latin}-{400,500,700}-normal*.woff2', '*.html', '{fr,nl,en}/*.html'],
-        globIgnores: ['**/l/**', 'static-loader-data/**'],
+        // Precache only the app shell (JS/CSS/fonts/icons). HTML pages are NOT precached: every page points to
+        // hashed data files of its own deploy, so an old cached page breaks after the next deploy
+        // ("Unexpected token '<' ... is not valid JSON"). Pages come from the network first instead.
+        globPatterns: ['**/*.{js,css,svg,png}', 'assets/*{arabic,latin}-{400,500,700}-normal*.woff2'],
+        globIgnores: ['**/*.html', '**/l/**', 'static-loader-data/**'],
         navigateFallback: null,
         runtimeCaching: [
           {
@@ -45,8 +47,8 @@ export default defineConfig(({ mode }) => ({
           },
           {
             urlPattern: ({ url }) => url.pathname.startsWith('/static-loader-data'),
-            handler: 'StaleWhileRevalidate',
-            options: { cacheName: 'page-data', expiration: { maxEntries: 120 } },
+            handler: 'NetworkFirst',
+            options: { cacheName: 'page-data', networkTimeoutSeconds: 4, expiration: { maxEntries: 120 } },
           },
         ],
       },

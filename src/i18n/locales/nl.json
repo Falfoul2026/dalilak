@@ -78,7 +78,11 @@
   },
   "install": {
     "ios": "Dalilak installeren op iPhone: tik op Delen en dan op ‘Zet op beginscherm’.",
-    "dismiss": "Sluiten"
+    "dismiss": "Sluiten",
+    "title": "App installeren",
+    "button": "Installeer Dalilak op uw apparaat",
+    "manual": "Open het browsermenu (⋮) en kies “App installeren” of “Toevoegen aan startscherm”.",
+    "installed": "De app is op uw apparaat geïnstalleerd ✓"
   },
   "common": {
     "soon": "Binnenkort",
@@ -334,5 +338,10 @@
     "error": "Versturen is mislukt. Probeer het zo meteen opnieuw.",
     "needContact": "Vul uw e-mail of telefoonnummer in.",
     "replyHint": "Vul uw e-mail of telefoonnummer in (minstens één) zodat we kunnen antwoorden."
+  },
+  "error": {
+    "title": "Er ging iets mis",
+    "text": "De site is zojuist bijgewerkt. Tik op “Herladen” om verder te gaan.",
+    "reload": "Herladen"
   }
 }

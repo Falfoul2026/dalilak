@@ -1,5 +1,6 @@
 import type { RouteRecord } from 'vite-react-ssg'
 import { Layout } from './components/Layout'
+import { RouteError } from './components/RouteError'
 import { LANGS, prefixOf } from './i18n/langs'
 import Settings from './pages/Settings'
 import NotFound from './pages/NotFound'
@@ -11,6 +12,7 @@ import { Claim, Login, Privacy, Report, Terms } from './pages/InfoPage'
 export const routes: RouteRecord[] = LANGS.map((lang) => ({
   path: prefixOf(lang) || '/',
   element: <Layout lang={lang} />,
+  errorElement: <RouteError />,
   children: [
     { index: true, lazy: () => import('./pages/Home') },
     { path: 'l/:slug', lazy: () => import('./pages/Listing') },

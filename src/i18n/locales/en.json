@@ -78,7 +78,11 @@
   },
   "install": {
     "ios": "To install Dalilak on iPhone: tap Share, then “Add to Home Screen”.",
-    "dismiss": "Close"
+    "dismiss": "Close",
+    "title": "Install the app",
+    "button": "Install Dalilak on your device",
+    "manual": "Open the browser menu (⋮) and choose “Install app” or “Add to Home screen”.",
+    "installed": "The app is installed on your device ✓"
   },
   "common": {
     "soon": "Coming soon",
@@ -334,5 +338,10 @@
     "error": "We could not send it. Please try again in a moment.",
     "needContact": "Please enter your email or phone number.",
     "replyHint": "Enter your email or phone number (at least one) so we can reply."
+  },
+  "error": {
+    "title": "Something went wrong",
+    "text": "The site was just updated. Tap “Reload” to continue.",
+    "reload": "Reload"
   }
 }

@@ -78,7 +78,11 @@
   },
   "install": {
     "ios": "Pour installer Dalilak sur iPhone : touchez Partager puis « Sur l’écran d’accueil ».",
-    "dismiss": "Fermer"
+    "dismiss": "Fermer",
+    "title": "Installer l’application",
+    "button": "Installer Dalilak sur votre appareil",
+    "manual": "Ouvrez le menu du navigateur (⋮) et choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil ».",
+    "installed": "L’application est installée sur votre appareil ✓"
   },
   "common": {
     "soon": "Bientôt",
@@ -334,5 +338,10 @@
     "error": "L’envoi a échoué. Réessayez dans un instant.",
     "needContact": "Indiquez votre e-mail ou votre téléphone.",
     "replyHint": "Indiquez votre e-mail ou votre téléphone (au moins l’un des deux) pour que nous puissions vous répondre."
+  },
+  "error": {
+    "title": "Un petit problème est survenu",
+    "text": "Le site vient d’être mis à jour. Appuyez sur « Recharger » pour continuer.",
+    "reload": "Recharger"
   }
 }

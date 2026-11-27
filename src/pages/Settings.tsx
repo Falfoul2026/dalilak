@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useLang, useT } from '../i18n'
 import { LANGS, LANG_NAMES, localePath } from '../i18n/langs'
 import { getTheme, saveLang, setTheme, type ThemePref } from '../lib/prefs'
+import { canPromptInstall, isStandalone, promptInstall, subscribeInstall } from '../lib/install'
+import { isIosSafariBrowser, isNativeApp } from '../lib/platform'
 
 export default function Settings() {
   const t = useT()
@@ -10,6 +12,16 @@ export default function Settings() {
   const navigate = useNavigate()
   const [theme, setThemeState] = useState<ThemePref>('system')
   useEffect(() => setThemeState(getTheme()), [])
+
+  // "Install the app": only on the website (not inside the Android app), and not when already installed.
+  const [install, setInstall] = useState<'hidden' | 'installed' | 'prompt' | 'ios' | 'manual'>('hidden')
+  useEffect(() => {
+    const update = () => setInstall(
+      isNativeApp() ? 'hidden' : isStandalone() ? 'installed' : canPromptInstall() ? 'prompt' : isIosSafariBrowser() ? 'ios' : 'manual',
+    )
+    update()
+    return subscribeInstall(update)
+  }, [])
 
   const chooseTheme = (v: ThemePref) => {
     setTheme(v)
@@ -49,6 +61,16 @@ export default function Settings() {
           ))}
         </div>
       </div>
+
+      {install !== 'hidden' && (
+        <div className="card stack">
+          <h2 style={{ margin: 0, fontSize: 17 }}>{t('install.title')}</h2>
+          {install === 'prompt' && <button className="btn" onClick={() => void promptInstall()}>{t('install.button')}</button>}
+          {install === 'ios' && <p style={{ margin: 0 }}>{t('install.ios')}</p>}
+          {install === 'manual' && <p style={{ margin: 0 }}>{t('install.manual')}</p>}
+          {install === 'installed' && <p style={{ margin: 0 }}>{t('install.installed')}</p>}
+        </div>
+      )}
 
       <div className="card stack">
         <Link to={localePath(lang, '/privacy')}>{t('settings.privacy')}</Link>
