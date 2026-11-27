@@ -17,7 +17,7 @@ export interface RawEntry {
   v?: number           // 1 = Arabic not confirmed
 }
 
-export const CATEGORY_SLUGS = ['food', 'meat', 'sweets', 'legal', 'doc', 'cloth', 'beauty', 'travel', 'edu'] as const
+export const CATEGORY_SLUGS = ['food', 'meat', 'sweets', 'legal', 'doc', 'cloth', 'beauty', 'travel', 'shipping', 'edu'] as const
 
 export const PROVINCE_MAP: Record<string, string> = {
   'Bruxelles-Capitale': 'brussels',

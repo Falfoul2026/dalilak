@@ -190,7 +190,8 @@ function PhotosBox({ listingId, onLogoChange }: { listingId: number; onLogoChang
   const logoInput = useRef<HTMLInputElement>(null)
   const galleryInput = useRef<HTMLInputElement>(null)
 
-  const reload = () => adminPhotos(listingId).then(setPhotos)
+  // a failed request shows a message instead of an unhandled error
+  const reload = () => adminPhotos(listingId).then(setPhotos).catch((e) => { setPhotos((prev) => prev ?? []); setMsg(t('admin.error', { msg: (e as Error).message ?? String(e) })) })
   useEffect(() => { void reload() }, [listingId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const logo = photos?.find((p) => p.kind === 'logo')

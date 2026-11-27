@@ -140,7 +140,8 @@ function AdPhotosBox({ adId, onChange }: { adId: number; onChange: () => void })
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState('')
   const input = useRef<HTMLInputElement>(null)
-  const reload = () => adminAdPhotos(adId).then(setPhotos)
+  // a failed request shows a message instead of an unhandled error
+  const reload = () => adminAdPhotos(adId).then(setPhotos).catch((e) => { setPhotos((prev) => prev ?? []); setMsg(t('admin.error', { msg: (e as Error).message ?? String(e) })) })
   useEffect(() => { void reload() }, [adId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const run = async (fn: () => Promise<void>) => {

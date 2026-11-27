@@ -197,7 +197,7 @@ function jsonLd(l: Listing, kind: string, url: string | undefined, website: stri
 }
 
 function ldType(category: string): string {
-  return ({ food: 'Restaurant', meat: 'Store', sweets: 'Bakery', cloth: 'ClothingStore', beauty: 'BeautySalon', doc: 'MedicalBusiness', legal: 'LegalService', travel: 'TravelAgency', edu: 'Organization' } as Record<string, string>)[category] ?? 'LocalBusiness'
+  return ({ food: 'Restaurant', meat: 'Store', sweets: 'Bakery', cloth: 'ClothingStore', beauty: 'BeautySalon', doc: 'MedicalBusiness', legal: 'LegalService', travel: 'TravelAgency', shipping: 'MovingCompany', edu: 'Organization' } as Record<string, string>)[category] ?? 'LocalBusiness'
 }
 
 export default Component
