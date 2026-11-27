@@ -266,28 +266,26 @@
   "contact": {
     "title": "Add your shop",
     "intro": "Do you run a shop or service for the Arab community in Belgium? Contact us to list it for free, or to make it “Featured” with a logo, photos and a place in “Our favourites”.",
-    "whatsapp": "WhatsApp",
     "email": "Email",
     "fix": "Spotted wrong info or a closed shop? Tell us and we will fix it.",
-    "addViaWhatsapp": "Add my shop via WhatsApp",
-    "reportViaWhatsapp": "Report wrong info or a closed shop"
+    "reportLink": "Report wrong info or a closed shop"
   },
   "legal": {
     "privacyBody": "Dalilak asks for no account and uses no tracking cookies. We only count, anonymously, page visits, taps on call and directions, and searches, without any data about you. Data is stored with Supabase (EU) and the site is hosted by Netlify. Shop details come from Google Maps or from the shops themselves. To correct or remove a shop’s details, contact us.",
     "termsBody": "Dalilak is a free guide. We do our best to keep details correct, but they can change: check with the shop before you go. Shops marked “Featured” have a Dalilak subscription (paid placement). The “Top rated” ranking does not depend on payment. “Buy & sell” ads: Dalilak only puts people in touch and does not guarantee the items offered; check for yourself before buying.",
-    "contactLine": "Contact about privacy, or to correct or remove details (WhatsApp):",
+    "contactLine": "Contact about privacy, or to correct or remove details:",
     "appNote": "The Dalilak Android app shows the same content as the website, asks for no special permissions (no location, contacts or camera) and collects no personal data about visitors."
   },
   "market": {
     "title": "Buy & sell",
-    "desc": "Sale ads from the Arab community in Belgium. Questions? Message us on WhatsApp.",
+    "desc": "Sale ads from the Arab community in Belgium. Questions? Open an ad and send us a message.",
     "search": "Search: car, flat, shop…",
     "allCities": "All cities",
     "sell": "Selling something?",
     "empty": "No ads for this search yet.",
     "priceOnRequest": "Price on request",
     "sold": "Sold",
-    "contact": "Contact us about this ad (WhatsApp)",
+    "contact": "Contact us about this ad",
     "soldNote": "This item has been sold.",
     "posted": "Posted {{date}}",
     "back": "All ads",
@@ -295,9 +293,8 @@
     "notFound": "This ad does not exist or has been hidden.",
     "middleman": "Dalilak handles the contact between you and the seller.",
     "sellTitle": "Sell something",
-    "sellIntro": "Selling a business, property, a car or items? Send us the details and photos on WhatsApp: we post the ad and follow up with buyers.",
-    "sellButton": "Send the details on WhatsApp",
-    "sellSteps": "Send us: what you sell, the city, the price and clear photos (up to 8)."
+    "sellIntro": "Selling a business, property, a car or items? Fill in the form: we post the ad and follow up with buyers.",
+    "sellSteps": "Tell us what you sell, the city and the price. When we reply by email, send the photos (up to 8) as a reply."
   },
   "adCategories": {
     "business": "Businesses for sale",
@@ -313,9 +310,29 @@
     "pageTitle": "Advertise with us",
     "pageIntro": "Reach thousands of people in the Arab community in Belgium: a banner with an image, title and link on Dalilak’s home page.",
     "point1": "A banner on the home page, labelled “Ad”.",
-    "point2": "An image and a title, linking to your website or WhatsApp.",
+    "point2": "An image and a title, linking to your website.",
     "point3": "You choose the period (from one date to another); it disappears by itself after the last day.",
-    "point4": "For prices and details, message us on WhatsApp.",
-    "contact": "Contact us on WhatsApp"
+    "point4": "For prices and details, fill in the form below.",
+    "contact": "Contact us"
+  },
+  "form": {
+    "name": "Your name",
+    "email": "Email",
+    "phone": "Phone number",
+    "message": "Message (optional)",
+    "shopName": "Shop name",
+    "city": "City",
+    "featured": "I’d like to know about the “Featured” plan",
+    "whatWrong": "What is wrong? (wrong info or closed shop)",
+    "business": "Your business name",
+    "whatSell": "What are you selling?",
+    "price": "Price",
+    "send": "Send",
+    "sending": "Sending…",
+    "sent": "We got your message ✓",
+    "sentSub": "We will reply by email or phone as soon as we can.",
+    "error": "We could not send it. Please try again in a moment.",
+    "needContact": "Please enter your email or phone number.",
+    "replyHint": "Enter your email or phone number (at least one) so we can reply."
   }
 }

@@ -1,11 +1,10 @@
 import { Head } from 'vite-react-ssg'
 import { useT } from '../i18n'
-import { WHATSAPP_MESSAGES, whatsappLink } from '../lib/flags'
+import { ContactForm } from '../components/ContactForm'
 
-/** "أعلن معنا": how banner advertising works, and a WhatsApp button to Yousef. */
+/** "أعلن معنا": how banner advertising works, and a form that goes to Yousef's email. */
 export function Component() {
   const t = useT()
-  const wa = whatsappLink(WHATSAPP_MESSAGES.advertise)
   return (
     <section className="stack">
       <Head>
@@ -20,7 +19,8 @@ export function Component() {
         <li>{t('banners.point3')}</li>
         <li>{t('banners.point4')}</li>
       </ul>
-      {wa && <a className="btn btn--whatsapp btn--block" href={wa} target="_blank" rel="noopener">{t('banners.contact')}</a>}
+      <h2 className="section-title">{t('banners.contact')}</h2>
+      <ContactForm kind="advertise" />
     </section>
   )
 }

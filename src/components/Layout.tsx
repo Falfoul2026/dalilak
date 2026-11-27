@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { Head } from 'vite-react-ssg'
 import { LangContext, useT } from '../i18n'
-import { LANGS, LANG_NAMES, LANG_SHORT, dirOf, localePath, splitLocale, type Lang } from '../i18n/langs'
+import { LANGS, LANG_NAMES, dirOf, localePath, splitLocale, type Lang } from '../i18n/langs'
 import { BottomNav } from './BottomNav'
 import { InstallHint } from './InstallHint'
 import { Logo } from './Logo'
@@ -49,12 +49,13 @@ function Shell({ lang }: { lang: Lang }) {
               <p className="brand__tagline">{t('app.tagline')}</p>
             </span>
           </Link>
-          <nav className="lang-switch" aria-label="Language">
-            {LANGS.filter((l) => l !== lang).map((l) => (
-              <Link key={l} to={localePath(l, rest)} hrefLang={l} lang={l} aria-label={LANG_NAMES[l]}>{LANG_SHORT[l]}</Link>
-            ))}
-          </nav>
+
         </div>
+        <nav className="container lang-switch" aria-label="Language">
+          {LANGS.map((l) => (
+            <Link key={l} to={localePath(l, rest)} hrefLang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{LANG_NAMES[l]}</Link>
+          ))}
+        </nav>
       </header>
       <main className="container">
         <Outlet />

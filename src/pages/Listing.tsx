@@ -12,7 +12,7 @@ import { RatingLine, StarRow } from '../components/Stars'
 import { directionsUrl, formatDate, formatRating, pickLang, safeWebsite, telHref } from '../lib/format'
 import { getListingBySlug, listingPhotos, listingReviews, photoUrl, track } from '../lib/listings'
 import { isSupabaseConfigured } from '../lib/supabase'
-import { WHATSAPP_MESSAGES, flags, whatsappLink } from '../lib/flags'
+import { flags } from '../lib/flags'
 import { publicUrl, shareLink } from '../lib/native'
 import type { Listing, Photo, Review } from '../lib/types'
 
@@ -79,7 +79,6 @@ export function Component() {
   const website = premium ? safeWebsite(l.website) : null           // website link is premium only
   const description = premium ? pickLang(l.description, lang) : ''
   const offer = premium ? pickLang(l.offer_text, lang) : ''
-  const reportLink = whatsappLink(WHATSAPP_MESSAGES.report)
   const gallery = photos.filter((p) => p.kind === 'gallery')
   const siteUrl = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '')
   const pageUrl = siteUrl ? `${siteUrl}${localePath(lang, `/l/${l.slug}`)}` : undefined
@@ -135,8 +134,8 @@ export function Component() {
       <dl className="card details">
         {l.address && <><dt>{t('listing.address')}</dt><dd dir="auto">{l.address}</dd></>}
         {l.phone && <><dt>{t('listing.phone')}</dt><dd><a href={telHref(l.phone)} dir="ltr" onClick={() => track(l.id, 'call')}>{l.phone}</a></dd></>}
-        <dt>{t('listing.googleRating')}</dt>
-        <dd><RatingLine rating={l.rating_google} count={l.reviews_google} /></dd>
+        {!(premium && l.rating_google == null) && <><dt>{t('listing.googleRating')}</dt>
+        <dd><RatingLine rating={l.rating_google} count={l.reviews_google} /></dd></>}
         {l.app_reviews_count > 0 && l.app_rating_avg !== null && (
           <><dt>{t('listing.appRating')}</dt><dd><span className="rating"><span className="rating__star" aria-hidden>★</span><b>{formatRating(l.app_rating_avg, lang)}</b><span className="muted">({l.app_reviews_count})</span></span></dd></>
         )}
@@ -170,12 +169,10 @@ export function Component() {
       </section>}
 
       <div className="listing__footer">
-        {/* Until visitor accounts exist, reports and claims go to the contact page. */}
-        {flags.userAccounts || !reportLink
-          ? <Link to={flags.userAccounts ? `${localePath(lang, '/report')}?listing=${l.id}` : localePath(lang, '/add')} className="muted-link"><IconFlag size={16} /> {t('listing.report')}</Link>
-          : <a href={reportLink} target="_blank" rel="noopener" className="muted-link"><IconFlag size={16} /> {t('contact.reportViaWhatsapp')}</a>}
+        {/* Until visitor accounts exist, reports go to the email form (shop name and page are pre-filled). */}
+        <Link to={flags.userAccounts ? `${localePath(lang, '/report')}?listing=${l.id}` : `${localePath(lang, '/report')}?shop=${encodeURIComponent(l.name)}&url=${encodeURIComponent(pageUrl ?? '')}`} className="muted-link"><IconFlag size={16} /> {t('listing.report')}</Link>
         {!l.owner_id && <Link to={flags.userAccounts ? `${localePath(lang, '/claim')}?listing=${l.id}` : localePath(lang, '/add')} className="muted-link">{t('listing.claim')}</Link>}
-        {l.source === 'google_maps' && <p className="muted source-note">{t('labels.sourceNote')}</p>}
+        {l.source === 'google_maps' && !premium && <p className="muted source-note">{t('labels.sourceNote')}</p>}
       </div>
 
       {toast && <div className="toast" role="status">{toast}</div>}

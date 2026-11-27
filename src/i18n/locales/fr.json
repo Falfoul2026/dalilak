@@ -266,28 +266,26 @@
   "contact": {
     "title": "Ajoutez votre commerce",
     "intro": "Vous avez un commerce ou un service pour la communauté arabe en Belgique ? Contactez-nous pour l’ajouter gratuitement, ou pour le rendre « sponsorisé » avec logo, photos et place dans « Nos coups de cœur ».",
-    "whatsapp": "WhatsApp",
     "email": "E-mail",
-    "fix": "Une info erronée ou un commerce fermé ? Écrivez-nous et nous corrigeons.",
-    "addViaWhatsapp": "Ajouter mon commerce via WhatsApp",
-    "reportViaWhatsapp": "Signaler une info erronée ou un commerce fermé"
+    "fix": "Une info erronée ou un commerce fermé ? Dites-le-nous et nous corrigerons.",
+    "reportLink": "Signaler une info erronée ou un commerce fermé"
   },
   "legal": {
     "privacyBody": "Dalilak ne demande pas de compte et n’utilise pas de cookies de suivi. Nous comptons seulement de façon anonyme les visites des pages, les clics sur appeler et itinéraire, et les recherches, sans aucune donnée sur vous. Les données sont hébergées chez Supabase (UE) et le site chez Netlify. Les infos des commerces viennent de Google Maps ou des commerçants. Pour corriger ou supprimer les infos d’un commerce, contactez-nous.",
     "termsBody": "Dalilak est un guide gratuit. Nous faisons de notre mieux pour que les infos soient exactes, mais elles peuvent changer : vérifiez auprès du commerce avant de vous déplacer. Les commerces marqués « Sponsorisé » ont un abonnement Dalilak (publicité payante). Le classement « Les mieux notés » ne dépend pas du paiement. Annonces « Acheter & vendre » : Dalilak ne fait que mettre en contact et ne garantit pas les biens proposés ; vérifiez vous-même avant d’acheter.",
-    "contactLine": "Contact pour la vie privée, ou pour corriger ou supprimer des infos (WhatsApp) :",
+    "contactLine": "Contact pour la vie privée, ou pour corriger ou supprimer des infos :",
     "appNote": "L’application Android Dalilak affiche le même contenu que le site, ne demande aucune autorisation particulière (ni position, ni contacts, ni caméra) et ne collecte aucune donnée personnelle des visiteurs."
   },
   "market": {
     "title": "Acheter & vendre",
-    "desc": "Annonces de vente de la communauté arabe en Belgique. Pour toute question, écrivez-nous sur WhatsApp.",
+    "desc": "Annonces de vente de la communauté arabe en Belgique. Pour toute question, ouvrez l’annonce et écrivez-nous.",
     "search": "Rechercher : voiture, appartement, commerce…",
     "allCities": "Toutes les villes",
     "sell": "Vous vendez quelque chose ?",
     "empty": "Aucune annonce pour cette recherche pour le moment.",
     "priceOnRequest": "Prix sur demande",
     "sold": "Vendu",
-    "contact": "Nous contacter pour cette annonce (WhatsApp)",
+    "contact": "Nous contacter pour cette annonce",
     "soldNote": "Cette annonce est vendue.",
     "posted": "Publiée le {{date}}",
     "back": "Toutes les annonces",
@@ -295,9 +293,8 @@
     "notFound": "Cette annonce n’existe pas ou a été masquée.",
     "middleman": "Dalilak assure le contact entre vous et le vendeur.",
     "sellTitle": "Vendre quelque chose",
-    "sellIntro": "Vous vendez un commerce, un bien immobilier, une voiture ou des objets ? Envoyez-nous les détails et les photos sur WhatsApp : nous publions l’annonce et suivons les acheteurs.",
-    "sellButton": "Envoyer les détails sur WhatsApp",
-    "sellSteps": "Envoyez-nous : ce que vous vendez, la ville, le prix et des photos nettes (jusqu’à 8)."
+    "sellIntro": "Vous vendez un commerce, un bien immobilier, une voiture ou des objets ? Remplissez le formulaire : nous publions l’annonce et suivons les acheteurs.",
+    "sellSteps": "Indiquez ce que vous vendez, la ville et le prix. Quand nous vous répondons par e-mail, envoyez-nous les photos (jusqu’à 8) en réponse."
   },
   "adCategories": {
     "business": "Commerces à vendre",
@@ -313,9 +310,29 @@
     "pageTitle": "Annoncez chez nous",
     "pageIntro": "Touchez des milliers de membres de la communauté arabe en Belgique : une bannière avec image, titre et lien sur la page d’accueil de Dalilak.",
     "point1": "Une bannière sur la page d’accueil, marquée « Publicité ».",
-    "point2": "Une image et un titre, avec un lien vers votre site ou votre WhatsApp.",
+    "point2": "Une image et un titre, avec un lien vers votre site.",
     "point3": "Vous choisissez la période (d’une date à une autre) ; elle disparaît seule après le dernier jour.",
-    "point4": "Pour les prix et détails, écrivez-nous sur WhatsApp.",
-    "contact": "Nous contacter sur WhatsApp"
+    "point4": "Pour les prix et détails, remplissez le formulaire ci-dessous.",
+    "contact": "Contactez-nous"
+  },
+  "form": {
+    "name": "Votre nom",
+    "email": "E-mail",
+    "phone": "Numéro de téléphone",
+    "message": "Message (facultatif)",
+    "shopName": "Nom du commerce",
+    "city": "Ville",
+    "featured": "Je souhaite en savoir plus sur l’offre « À la une »",
+    "whatWrong": "Qu’est-ce qui ne va pas ? (info erronée ou commerce fermé)",
+    "business": "Nom de votre entreprise",
+    "whatSell": "Que vendez-vous ?",
+    "price": "Prix",
+    "send": "Envoyer",
+    "sending": "Envoi en cours…",
+    "sent": "Nous avons bien reçu votre message ✓",
+    "sentSub": "Nous vous répondrons par e-mail ou par téléphone dès que possible.",
+    "error": "L’envoi a échoué. Réessayez dans un instant.",
+    "needContact": "Indiquez votre e-mail ou votre téléphone.",
+    "replyHint": "Indiquez votre e-mail ou votre téléphone (au moins l’un des deux) pour que nous puissions vous répondre."
   }
 }

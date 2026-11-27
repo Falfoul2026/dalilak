@@ -1,6 +1,5 @@
 // Buy & Sell ("بيع وشراء"): public reads. Ads are written only from the admin panel.
 import type { Lang } from '../i18n/langs'
-import { WHATSAPP_MESSAGES, contact } from './flags'
 import { supabase } from './supabase'
 
 export type AdCategory = 'business' | 'real_estate' | 'cars' | 'furniture' | 'other'
@@ -78,13 +77,4 @@ export function formatPrice(price: number | null, lang: Lang): string | null {
   return new Intl.NumberFormat(lang === 'ar' ? 'ar-u-nu-latn' : `${lang}-BE`, {
     style: 'currency', currency: 'EUR', maximumFractionDigits: Number.isInteger(n) ? 0 : 2,
   }).format(n)
-}
-
-/** WhatsApp to Yousef about one ad (buyers never contact the seller directly). */
-export function adWhatsappLink(ad: Ad, pageUrl: string | null): string | null {
-  if (!contact.whatsapp) return null
-  // strip invisible direction marks from the Arabic number format
-  const price = ad.price_eur !== null ? ` – ${formatPrice(ad.price_eur, 'ar')?.replace(/[\u200e\u200f]/g, '')}` : ''
-  const msg = `${WHATSAPP_MESSAGES.adInterest} رقم ${ad.id}: ${ad.title}${price}${pageUrl ? `\n${pageUrl}` : ''}`
-  return `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(msg)}`
 }

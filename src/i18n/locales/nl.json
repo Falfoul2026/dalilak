@@ -266,28 +266,26 @@
   "contact": {
     "title": "Voeg je zaak toe",
     "intro": "Heb je een zaak of dienst voor de Arabische gemeenschap in België? Neem contact op om ze gratis toe te voegen, of om ze ‘gesponsord’ te maken met logo, foto’s en een plaats in ‘Onze favorieten’.",
-    "whatsapp": "WhatsApp",
     "email": "E-mail",
-    "fix": "Foute info of een gesloten zaak gezien? Laat het ons weten.",
-    "addViaWhatsapp": "Zaak toevoegen via WhatsApp",
-    "reportViaWhatsapp": "Foute info of gesloten zaak melden"
+    "fix": "Foute info of een gesloten zaak gezien? Laat het ons weten en we passen het aan.",
+    "reportLink": "Foute info of gesloten zaak melden"
   },
   "legal": {
     "privacyBody": "Dalilak vraagt geen account en gebruikt geen trackingcookies. We tellen alleen anoniem paginabezoeken, klikken op bellen en route, en zoekopdrachten, zonder gegevens over jou. De gegevens staan bij Supabase (EU) en de site bij Netlify. De info over zaken komt van Google Maps of van de zaken zelf. Om info van een zaak te verbeteren of te verwijderen, neem contact op.",
     "termsBody": "Dalilak is een gratis gids. We doen ons best om de info juist te houden, maar ze kan wijzigen: check bij de zaak voor je gaat. Zaken met ‘Gesponsord’ hebben een Dalilak-abonnement (betaalde vermelding). De rangorde ‘Best beoordeeld’ hangt niet af van betaling. Advertenties ‘Kopen & verkopen’: Dalilak brengt alleen partijen in contact en geeft geen garantie op wat te koop staat; controleer zelf voor je koopt.",
-    "contactLine": "Contact over privacy, of om info te verbeteren of te verwijderen (WhatsApp):",
+    "contactLine": "Contact over privacy, of om info te verbeteren of te verwijderen:",
     "appNote": "De Android-app van Dalilak toont dezelfde inhoud als de website, vraagt geen bijzondere toestemmingen (geen locatie, contacten of camera) en verzamelt geen persoonsgegevens van bezoekers."
   },
   "market": {
     "title": "Kopen & verkopen",
-    "desc": "Verkoopadvertenties van de Arabische gemeenschap in België. Vragen? Stuur ons een bericht op WhatsApp.",
+    "desc": "Verkoopadvertenties van de Arabische gemeenschap in België. Vragen? Open de advertentie en stuur ons een bericht.",
     "search": "Zoek: auto, appartement, zaak…",
     "allCities": "Alle steden",
     "sell": "Iets te koop?",
     "empty": "Nog geen advertenties voor deze zoekopdracht.",
     "priceOnRequest": "Prijs op aanvraag",
     "sold": "Verkocht",
-    "contact": "Contacteer ons over deze advertentie (WhatsApp)",
+    "contact": "Contacteer ons over deze advertentie",
     "soldNote": "Deze advertentie is verkocht.",
     "posted": "Geplaatst op {{date}}",
     "back": "Alle advertenties",
@@ -295,9 +293,8 @@
     "notFound": "Deze advertentie bestaat niet of is verborgen.",
     "middleman": "Dalilak regelt het contact tussen jou en de verkoper.",
     "sellTitle": "Iets verkopen",
-    "sellIntro": "Verkoop je een zaak, vastgoed, een auto of spullen? Stuur ons de details en foto’s via WhatsApp: wij plaatsen de advertentie en volgen de kopers op.",
-    "sellButton": "Stuur de details via WhatsApp",
-    "sellSteps": "Stuur ons: wat je verkoopt, de stad, de prijs en duidelijke foto’s (max. 8)."
+    "sellIntro": "Verkoopt u een zaak, vastgoed, een auto of spullen? Vul het formulier in: wij plaatsen de advertentie en volgen de kopers op.",
+    "sellSteps": "Geef aan wat u verkoopt, de stad en de prijs. Wanneer we per e-mail antwoorden, stuurt u de foto’s (tot 8) als antwoord."
   },
   "adCategories": {
     "business": "Zaken te koop",
@@ -313,9 +310,29 @@
     "pageTitle": "Adverteer bij ons",
     "pageIntro": "Bereik duizenden leden van de Arabische gemeenschap in België: een banner met afbeelding, titel en link op de homepage van Dalilak.",
     "point1": "Een banner op de homepage, gemarkeerd als ‘Advertentie’.",
-    "point2": "Een afbeelding en titel, met een link naar je website of WhatsApp.",
+    "point2": "Een afbeelding en titel, met een link naar uw website.",
     "point3": "Jij kiest de periode (van datum tot datum); daarna verdwijnt hij vanzelf.",
-    "point4": "Voor prijzen en details: stuur ons een bericht op WhatsApp.",
-    "contact": "Contacteer ons op WhatsApp"
+    "point4": "Voor prijzen en details: vul het formulier hieronder in.",
+    "contact": "Neem contact met ons op"
+  },
+  "form": {
+    "name": "Uw naam",
+    "email": "E-mail",
+    "phone": "Telefoonnummer",
+    "message": "Bericht (optioneel)",
+    "shopName": "Naam van de zaak",
+    "city": "Stad",
+    "featured": "Ik wil meer weten over het “Uitgelicht”-abonnement",
+    "whatWrong": "Wat klopt er niet? (foute info of gesloten zaak)",
+    "business": "Naam van uw bedrijf",
+    "whatSell": "Wat verkoopt u?",
+    "price": "Prijs",
+    "send": "Versturen",
+    "sending": "Bezig met versturen…",
+    "sent": "We hebben uw bericht ontvangen ✓",
+    "sentSub": "We antwoorden zo snel mogelijk per e-mail of telefoon.",
+    "error": "Versturen is mislukt. Probeer het zo meteen opnieuw.",
+    "needContact": "Vul uw e-mail of telefoonnummer in.",
+    "replyHint": "Vul uw e-mail of telefoonnummer in (minstens één) zodat we kunnen antwoorden."
   }
 }

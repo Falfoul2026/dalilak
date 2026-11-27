@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="robots" content="noindex" /><title>forms</title></head>
+  <body>
+    <!-- Declares the forms to Netlify (it scans this file at deploy time). The real forms are in React
+         (src/components/ContactForm.tsx) and post here. Keep the field names in sync with that file. -->
+    <form name="add-shop" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="shopName" /><input name="city" /><input name="name" /><input name="email" /><input name="phone" />
+      <input name="featured" /><textarea name="message"></textarea><input name="lang" /><input name="page" />
+    </form>
+    <form name="report" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="shopName" /><input name="shopUrl" /><textarea name="message"></textarea>
+      <input name="email" /><input name="phone" /><input name="lang" /><input name="page" />
+    </form>
+    <form name="advertise" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="business" /><input name="name" /><input name="email" /><input name="phone" />
+      <textarea name="message"></textarea><input name="lang" /><input name="page" />
+    </form>
+    <form name="sell" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="whatSell" /><input name="city" /><input name="price" /><input name="name" />
+      <input name="email" /><input name="phone" /><textarea name="message"></textarea><input name="lang" /><input name="page" />
+    </form>
+    <form name="ad-interest" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="ad" /><input name="adUrl" /><input name="name" /><input name="email" /><input name="phone" />
+      <textarea name="message"></textarea><input name="lang" /><input name="page" />
+    </form>
+  </body>
+</html>

@@ -4,8 +4,9 @@ import { Head } from 'vite-react-ssg'
 import { useLang, useT } from '../../i18n'
 import { localePath } from '../../i18n/langs'
 import { Loading } from '../../components/ListState'
+import { ContactForm } from '../../components/ContactForm'
 import { backArrow, formatDate } from '../../lib/format'
-import { AD_CATEGORIES, adPhotoUrl, adPhotos, adWhatsappLink, formatPrice, getAdBySlug, type Ad, type AdPhoto } from '../../lib/market'
+import { AD_CATEGORIES, adPhotoUrl, adPhotos, formatPrice, getAdBySlug, type Ad, type AdPhoto } from '../../lib/market'
 import { isSupabaseConfigured } from '../../lib/supabase'
 
 export async function loader({ params }: { params: { slug?: string } }) {
@@ -45,7 +46,6 @@ export function Component() {
   const pageUrl = siteUrl ? `${siteUrl}${localePath(lang, `/market/${ad.slug}`)}` : null
   const price = formatPrice(ad.price_eur, lang)
   const sold = ad.status === 'sold'
-  const wa = sold ? null : adWhatsappLink(ad, pageUrl)
   const icon = AD_CATEGORIES.find((c) => c.slug === ad.category)?.icon ?? '📦'
   const shownPhotos = photos.length ? photos : ad.cover_path ? [{ id: 0, storage_path: ad.cover_path, sort_order: 0 }] : []
 
@@ -68,10 +68,14 @@ export function Component() {
         <p className="ad-price">{price ?? t('market.priceOnRequest')} {sold && <span className="badge badge--sold">{t('market.sold')}</span>}</p>
         <p className="listing__kind">{ad.city} · {t(`adCategories.${ad.category}`)} · {t('market.adNumber', { id: ad.id })}</p>
       </header>
-      {sold
-        ? <div className="card">{t('market.soldNote')}</div>
-        : wa && <a className="btn btn--whatsapp btn--block" href={wa} target="_blank" rel="noopener">{t('market.contact')}</a>}
-      {!sold && <p className="muted" style={{ margin: 0, fontSize: 14 }}>{t('market.middleman')}</p>}
+      {sold && <div className="card">{t('market.soldNote')}</div>}
+      {!sold && (
+        <>
+          <h2 className="section-title">{t('market.contact')}</h2>
+          <ContactForm kind="ad-interest" hidden={{ ad: `#${ad.id} ${ad.title}`, ...(pageUrl ? { adUrl: pageUrl } : {}) }} />
+          <p className="muted" style={{ margin: 0, fontSize: 14 }}>{t('market.middleman')}</p>
+        </>
+      )}
       {ad.description && <section className="card"><p dir="auto" style={{ margin: 0, whiteSpace: 'pre-line' }}>{ad.description}</p></section>}
       <p className="muted" style={{ fontSize: 13 }}>{t('market.posted', { date: formatDate(ad.created_at, lang) })}</p>
     </article>

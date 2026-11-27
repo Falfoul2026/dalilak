@@ -1,15 +1,13 @@
 import { Head } from 'vite-react-ssg'
 import { Link } from 'react-router-dom'
+import { ContactForm } from '../components/ContactForm'
 import { useLang, useT } from '../i18n'
 import { localePath } from '../i18n/langs'
-import { WHATSAPP_MESSAGES, whatsappLink } from '../lib/flags'
 
-/** "أضف محلك": shops contact Yousef directly (WhatsApp / email). */
+/** "أضف محلك": shops send their details to Yousef by email (form). */
 export function Component() {
   const t = useT()
   const lang = useLang()
-  const addLink = whatsappLink(WHATSAPP_MESSAGES.addShop)
-  const reportLink = whatsappLink(WHATSAPP_MESSAGES.report)
   return (
     <section className="stack">
       <Head>
@@ -18,10 +16,10 @@ export function Component() {
       </Head>
       <h1 className="page-title">{t('contact.title')}</h1>
       <p style={{ margin: 0 }}>{t('contact.intro')}</p>
-      {addLink && <a className="btn btn--whatsapp" href={addLink} target="_blank" rel="noopener">{t('contact.addViaWhatsapp')}</a>}
+      <ContactForm kind="add-shop" />
       <Link to={localePath(lang, '/advertise')}>{t('banners.pageTitle')}</Link>
       <p className="muted" style={{ margin: 0 }}>{t('contact.fix')}</p>
-      {reportLink && <a className="btn btn--ghost" href={reportLink} target="_blank" rel="noopener">{t('contact.reportViaWhatsapp')}</a>}
+      <Link className="btn btn--ghost" to={localePath(lang, '/report')}>{t('contact.reportLink')}</Link>
     </section>
   )
 }
